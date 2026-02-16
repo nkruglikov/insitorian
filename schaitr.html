@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview with Schaitr - The Insitorian</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="monocle.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { darkMode: 'class' }
+</script>
+<script>
+(function(){
+  var s = localStorage.getItem('theme');
+  if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+</head>
+<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-serif leading-normal transition-colors">
+
+<!-- Masthead -->
+<header class="text-center pt-7 pb-[18px] border-b-4 border-double border-stone-300 dark:border-stone-700 relative">
+  <button onclick="toggleTheme()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-stone-300 dark:border-stone-600 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors text-sm cursor-pointer" aria-label="Toggle theme">
+    <span class="dark:hidden">&#x263E;</span>
+    <span class="hidden dark:inline">&#x2600;</span>
+  </button>
+  <div class="max-w-[960px] mx-auto px-5">
+    <div class="font-sans text-xs uppercase tracking-[.12em] text-stone-500 dark:text-stone-400 mb-1">Elections Special</div>
+    <h1 class="text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5"><a href="index.html" class="hover:underline"><img src="monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</a></h1>
+    <div class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
+  </div>
+</header>
+
+<main class="max-w-[680px] mx-auto px-5">
+
+<nav class="pt-5 font-sans text-[.8rem]">
+  <a href="index.html" class="text-sky-700 dark:text-sky-400 hover:underline">&larr; Back to front page</a>
+</nav>
+
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+
+<article>
+  <h2 class="font-serif text-2xl md:text-3xl font-bold mb-2 leading-tight">Interview with Schaitr</h2>
+  <p class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400 mb-6">Incumbent Governor of Promitor &middot; Candidate for Promitor, Avalon &amp; Boucher</p>
+
+  <div class="text-[1.05rem] leading-relaxed">
+
+    <h3 class="font-serif text-xl font-bold text-stone-800 dark:text-stone-200 border-t border-stone-300 dark:border-stone-700 pt-4 mt-0 mb-4">Background</h3>
+
+    <div class="space-y-6 mb-8">
+    <section>
+      <p class="font-bold mb-2">How did you learn about PrUn? What attracted you, and what made you stay there?</p>
+      <p>I believe I saw a Youtube advert on Spacedock or Eckhart, and I gave it a try because it sounded interesting. I have this thing for making plans so things run smoothly (e.g. management games), so this scratched that itch somewhat.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">What are your long-term goals in-game currently?</p>
+      <p>My in-game goals have been consistently making sure new players feel welcome, and providing support for them where I can. The more new players stay around, the larger the community and the richer the markets will become. We've all been there before, when you have to decide which consumable or material to sacrifice because you won't have enough money to keep production running. If I can provide some support and prevent new players from simply giving up because they've hit a brick wall, I'd do it since I am in a position to do so.</p>
+      <p class="mt-3">Just some statistics to back up what I said. I've sold 430 ship upgrade kits so far, and I bear the losses from subsidising these kits. I've also issued 113 base lease deals, of which the majority result in 10k/day losses, and the rest make me 1k/day. If I wanted to, the money could have been deployed on more profitable endeavors, but that doesn't appeal to me compared to helping new players.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">Can you share anything about your real-life background or profession, and how it relates to PrUn?</p>
+      <p>Nope, not going to share anything, except that Mandarin is my second language, and this has been really helpful these past few weeks.</p>
+    </section>
+    </div>
+
+    <h3 class="font-serif text-xl font-bold text-stone-800 dark:text-stone-200 border-t border-stone-300 dark:border-stone-700 pt-4 mb-4">Elections</h3>
+
+    <div class="space-y-6 mb-8">
+    <section>
+      <p class="font-bold mb-2">Why did you decide to run?</p>
+      <p>I believe that public funds (even in-game currency which have no real world applications) should be used in a transparent and accountable manner, and I am very concerned that it won't be. I don't believe that loans are the best way forward with public funds because only a few people will benefit from what everyone has collectively paid for through taxes. I have nothing against loans &mdash; privately funded loans are a real help for new players &mdash; but I'm against using public funds for loans.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">What planets are contested currently?</p>
+      <p>Promitor and Avalon, and I believe the opposition also wants to contest Boucher and Helion Prime.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">Do you have a particular attachment to the Insitor region, or are you more interested in the galaxy as a whole?</p>
+      <p>Of course [I am attached to Insitor], and Promitor holds a special place. This is also why the base lease deals were only open to Promitor folks for the longest of time. However, I still offer the subsidised newbie ship upgrade packs to anyone, not just people from Insitor.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">Why are you interested in a position of power / responsibility? Do you usually take such positions in other games or in real life?</p>
+      <p>Nope. Being able to make things run smoothly gives me joy, and being a governor lets me help manage the planet's population and the inputs required for infrastructure and CoGC. Added bonus when I manage to pare down the unemployed populations to just what's needed, so that no infrastructure inputs need to be wasted.</p>
+    </section>
+    </div>
+
+    <h3 class="font-serif text-xl font-bold text-stone-800 dark:text-stone-200 border-t border-stone-300 dark:border-stone-700 pt-4 mb-4">Policy</h3>
+
+    <div class="space-y-6 mb-8">
+    <section>
+      <p class="font-bold mb-2">Your main proposal is to use government funds to finance "base leases" for producing gateway materials. You've run many such programs in the past. Can you explain to an unfamiliar reader, how do these deals work in general?</p>
+      <p>This is basically leasing your permit to build a base, with you repaying by sending me the products for a set period of time. You will need to have a PRO license, and an available permit. Base building materials and consumables will be provided on-site, and the products will be sent back to me on-site, so no shipping is required from you at all. This is done quite regularly by older players because HQ permits get really expensive later on. For me though, I'm not in it to expand my own production or profits, but to stimulate economic activity in the Insitor region. As stated earlier, I either make a substantial loss, or at most very little profit from such lease deals.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">Can you describe a concrete example of a potential base lease deal for gateway construction, with numbers and other details?</p>
+      <p>This depends on the complexity that participants are confident in dealing with. If you prefer a simpler base, we could set you up with a "feeder base" that provides materials for the intermediate or final gateway products, e.g. a 24-POL PG production base. If you're fine with a more complex setup, we could set you up with an Afab production base instead, which would include integrated Rfab production onsite (5 PP3 and 5 PP4).</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">What are the alternative ways to finance gateway construction, and why do you think base leases are the best option?</p>
+      <p>Base leases are not meant to finance gateway construction &mdash; they contribute directly to making the gateway parts. We could just buy the available parts off CX, of course, but that would leave us at the mercy of market prices (which are horrendous). Other regions have depended on donations from established players, and massive investment of time to plan the different bases. COSM is doing the same for the Insitor region, but have been depending on their own more established members to produce the parts. Base leases allow anyone to participate and contribute to the gateway construction project.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">You say that you oppose loans because they only benefit some players. How is that different from base leases? And by the way, how would the players receiving the deals be chosen?</p>
+      <p>Loans may not directly contribute to the gateway project, depending on whether they are limited to gateway-related bases. As far as I know, the opposition group wants to use gov funds to develop their own planets, rather than to contribute to something which will benefit all taxpayers. Base leases that are geared towards gateways will speed up gateway construction, which will benefit Promitor residents.</p>
+      <p class="mt-3">Besides the usual PRO, and having some time in the game as a proxy to show your commitment to the game to reduce the chances of ghosting, there are no restrictions on who gets chosen.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">Before the challenge from <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">Euu<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">EndlessFrontier Capital | EUU</span></span> came, the government funds were stagnant for a very long time. Why?</p>
+      <p>This is partly my fault. As I've stated multiple times, privately and publicly, the surplus will be channelled towards gateways. What I didn't do was to check in with COSM whether they could deploy the funds when they started their gateway project.</p>
+    </section>
+    </div>
+
+    <h3 class="font-serif text-xl font-bold text-stone-800 dark:text-stone-200 border-t border-stone-300 dark:border-stone-700 pt-4 mb-4">Politics</h3>
+
+    <div class="space-y-6">
+    <section>
+      <p class="font-bold mb-2">Who are your running mates on each of the contested planets? Can you introduce them? How did you pick them?</p>
+      <p>On Promitor, my running mates are <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">Filefolders<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">Knott-Stone-Davis Cooperative | KSDC</span></span> and <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">PurpleOrange<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">Hydrohomies | HYDR</span></span>. They are senior officers of COSM. I believe File doesn't need to be introduced since he has been very active helping answer questions on Prom chat. PurpleOrange works quietly in the background but is the main man behind the whole gateway project for Insitor.</p>
+      <p class="mt-3">On Avalon, my running mates are Filefolders and <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">Tegridy<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">Utnapishtim | UTNA</span></span>. Tegridy is a senior representative of the CN community.</p>
+      <p class="mt-3">All of us are aligned in the vision of how we want Insitor region to be, and how public funds should be used to fund public projects that benefit all, instead of a few.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">These elections are parliamentary. So the important question is not who collects the most votes individually, but whose group will gain the most seats. But what would happen if one side gained the most seats, but the other one gained the most votes for an individual?</p>
+      <p>As you said, it's a parliamentary election, so it's a team effort.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">One notable aspect of this election is that the group who oppose you seems to be exclusively Chinese-speaking. Is this election a power struggle between Chinese- and English-speaking fractions? Is the divide caused mostly by language and technology barriers, or are there cultural differences as well?</p>
+      <p>I don't find it constructive to see it as Mandarin-speakers vs English-speakers. This assumes that both groups are monolithic, which they are not. I speak both Mandarin and English. Where does that put me then? What came out to me from the saga in Prom chat was that there are real language barriers, and we do not have many who can understand both sides. Translation softwares do not capture cultural nuances and may feed misunderstandings. I have been reaching out to the Mandarin-speaking community to try to reduce such misunderstandings, even down to asking them to type in Mandarin instead of using translation softwares.</p>
+    </section>
+
+    <section>
+      <p class="font-bold mb-2">Speaking of which, are you planning to represent both language fractions, or are you catering more to one of the groups?</p>
+      <p>I cater to anyone in the Insitor region. As stated earlier, I find it very unconstructive and divisive to group people into the language they speak.</p>
+    </section>
+    </div>
+
+  </div>
+
+  <p class="mt-8 font-sans text-[.82rem] text-stone-500 dark:text-stone-400">Interview conducted by <span class="font-bold text-stone-700 dark:text-stone-300">untech</span></p>
+</article>
+
+<!-- Footer -->
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; by untech and raylu</div>
+
+</main>
+
+<script>
+window.toggleTheme = function(){
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme',
+    document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+};
+</script>
+
+</body>
+</html>
