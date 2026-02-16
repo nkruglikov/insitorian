@@ -79,12 +79,12 @@ tailwind.config = { darkMode: 'class' }
 
 <!-- Candidate Comparison -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-6 mb-2 items-stretch">
+<div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] md:grid-rows-[repeat(13,auto)] gap-x-6 mb-2">
 
-  <div class="flex flex-col">
+  <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_13]">
     <h3 class="font-serif text-xl font-bold mb-0.5">Schaitr</h3>
     <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">Incumbent</span>
-    <dl class="font-sans text-sm">
+    <dl class="font-sans text-sm contents">
       <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Registered</dt>
       <dd class="ml-0">2 September 2022</dd>
       <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Experience</dt>
@@ -106,12 +106,12 @@ tailwind.config = { darkMode: 'class' }
     <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="#">Read interview with Schaitr &rarr;</a>
   </div>
 
-  <div class="hidden md:block bg-stone-300 dark:bg-stone-700"></div>
+  <div class="hidden md:block md:row-[span_13] bg-stone-300 dark:bg-stone-700"></div>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_13]">
     <h3 class="font-serif text-xl font-bold mb-0.5">Euu</h3>
     <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">Challenger</span>
-    <dl class="font-sans text-sm">
+    <dl class="font-sans text-sm contents">
       <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Registered</dt>
       <dd class="ml-0">19 October 2025</dd>
       <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Experience</dt>
@@ -136,8 +136,8 @@ tailwind.config = { darkMode: 'class' }
 
 <!-- Article -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<p class="text-[.95rem] mb-3 leading-relaxed">Elections were first introduced in December 2019 with the Expanse update. In June 2024, the Realpolitik update revamped the system, replacing solo governors with parliaments.</p>
-<p class="text-[.95rem] mb-3 leading-relaxed">Elections are usually quite boring in Prosperous Universe. Being in the government is considered a thankless task, so the old governor and their parliament usually get reelected without issues. However, upcoming elections on Promitor, the most populous planet in the universe, and also some neighbouring planets, are unusually heated. The incumbent government of Schaitr, who has 3.5 years of playtime experience, is challenged by the newcomer Euu, who has 4 months of experience.</p>
+<p class="text-[1.1rem] mb-3 leading-relaxed">Elections were first introduced in December 2019 with the Expanse update. In June 2024, the Realpolitik update revamped the system, replacing solo governors with parliaments.</p>
+<p class="text-[1.1rem] mb-3 leading-relaxed">Elections are usually quite boring in Prosperous Universe. Being in the government is considered a thankless task, so the old governor and their parliament usually get reelected without issues. However, upcoming elections on Promitor, the most populous planet in the universe, and also some neighbouring planets, are unusually heated. The incumbent government of Schaitr, who has 3.5 years of playtime experience, is challenged by the newcomer Euu, who has 4 months of experience.</p>
 
 <!-- Timeline -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
@@ -163,7 +163,7 @@ tailwind.config = { darkMode: 'class' }
 
 <!-- Footer -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; A Prosperous Universe publication &middot; All information based on publicly available in-game data</div>
+<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; by untech and raylu</div>
 
 </main>
 
