@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/monocle.png");
   eleventyConfig.addPassthroughCopy("src/favicon-32x32.png");
   eleventyConfig.addWatchTarget("src/_data/voting.csv");
