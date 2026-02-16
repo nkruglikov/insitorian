@@ -1,0 +1,24 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<main class="max-w-[680px] mx-auto px-5">
+
+<nav class="pt-5 font-sans text-[.8rem]">
+  <a href="{{ rootPath }}" class="text-sky-700 dark:text-sky-400 hover:underline">&larr; Back to front page</a>
+</nav>
+
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+
+<article>
+  <h1 class="font-serif text-2xl md:text-3xl font-bold mb-2 leading-tight">{{ heading }}</h1>
+  <p class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400 mb-6">{{ subtitle }}</p>
+
+  <div class="text-[1.05rem] leading-relaxed [&>:first-child]:mt-0">
+    {{ content | safe }}
+  </div>
+
+  <p class="mt-8 font-sans text-[.82rem] text-stone-500 dark:text-stone-400">Interview conducted by <span class="font-bold text-stone-700 dark:text-stone-300">{{ interviewer }}</span></p>
+</article>
+
+</main>
+{% endblock %}

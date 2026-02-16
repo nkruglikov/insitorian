@@ -1,33 +1,7 @@
----
-permalink: index.html
----
 {% extends "base.njk" %}
 
 {% set isHome = true %}
-{% set title = "The Insitorian - Elections Special" %}
 {% set rootPath = "" %}
-
-{% block head %}
-<style>
-  .leg-schaitr::before,
-  .leg-euu::before,
-  .leg-neutral::before {
-    content: "";
-    display: inline-block;
-    width: 14px;
-    height: 3px;
-    margin-right: 5px;
-    vertical-align: middle;
-  }
-  .leg-schaitr::before { background: #b45309; }
-  .leg-euu::before { background: #0369a1; }
-  .leg-neutral::before { background: #78716c; }
-  .dark .leg-schaitr::before { background: #d97706; }
-  .dark .leg-euu::before { background: #0ea5e9; }
-  .dark .leg-neutral::before { background: #a8a29e; }
-  .chart-pane svg { width: 100%; height: auto; display: block; }
-</style>
-{% endblock %}
 
 {% block content %}
 <main class="max-w-[960px] mx-auto px-5">
@@ -36,20 +10,20 @@ permalink: index.html
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
 <h2 class="font-serif text-xl font-bold mb-1.5">Voting Progress</h2>
 <div class="flex flex-wrap justify-center gap-x-3.5 gap-y-1 mb-5 font-sans text-xs">
-  <span class="leg-schaitr">Schaitr &amp; allies</span>
-  <span class="leg-euu">Euu &amp; allies</span>
-  <span class="leg-neutral">Unaffiliated</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-amber-700 dark:bg-amber-600"></span>Schaitr &amp; allies</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-sky-700 dark:bg-sky-500"></span>Euu &amp; allies</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-stone-500 dark:bg-stone-400"></span>Unaffiliated</span>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-[18px] mb-2">
-  <div class="chart-pane">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-[18px] mb-2 [&_svg]:w-full [&_svg]:h-auto [&_svg]:block">
+  <div>
     <h3 class="font-sans text-sm font-bold mb-1.5">Promitor</h3>
     <div id="chart-promitor"></div>
   </div>
-  <div class="chart-pane">
+  <div>
     <h3 class="font-sans text-sm font-bold mb-1.5">Avalon</h3>
     <div id="chart-avalon"></div>
   </div>
-  <div class="chart-pane">
+  <div>
     <h3 class="font-sans text-sm font-bold mb-1.5">Boucher</h3>
     <div id="chart-boucher"></div>
   </div>
@@ -57,86 +31,52 @@ permalink: index.html
 
 <!-- Candidate Comparison -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] md:grid-rows-[repeat(13,auto)] gap-x-6 mb-2">
-
-  <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_13]">
-    <h3 class="font-serif text-xl font-bold mb-0.5">Schaitr</h3>
-    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">Incumbent</span>
+{% set rowCount = 3 + candidates[0].fields | length * 2 %}
+<div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] md:grid-rows-[repeat({{ rowCount }},auto)] gap-x-6 mb-2">
+  {% for candidate in candidates %}
+  {% if not loop.first %}
+  <div class="hidden md:block md:row-[span_{{ rowCount }}] bg-stone-300 dark:bg-stone-700"></div>
+  {% endif %}
+  <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_{{ rowCount }}]">
+    <h3 class="font-serif text-xl font-bold mb-0.5">{{ candidate.name }}</h3>
+    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">{{ candidate.role }}</span>
     <dl class="font-sans text-sm contents">
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Registered</dt>
-      <dd class="ml-0">2 September 2022</dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Experience</dt>
-      <dd class="ml-0">3.5 years</dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Key Proposal</dt>
-      <dd class="ml-0">Base leases for gateway parts</dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Terms Served</dt>
+      {% for field in candidate.fields %}
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">{{ field.label }}</dt>
       <dd class="ml-0">
+        {% if field.items %}
         <ul class="list-none p-0 text-[.82rem]">
-          <li class="py-0.5">Promitor &mdash; 29&times; governor, 1&times; parliament</li>
-          <li class="py-0.5">Avalon &mdash; 7&times; governor, 13&times; parliament</li>
-          <li class="py-0.5">Boucher &mdash; 24&times; governor, 6&times; parliament</li>
-          <li class="py-0.5">Helion Prime &mdash; 15&times; governor, 4&times; parliament</li>
+          {% for item in field.items %}
+          <li class="py-0.5">{{ item }}</li>
+          {% endfor %}
         </ul>
+        {% else %}
+        {{ field.value }}
+        {% endif %}
       </dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Allies</dt>
-      <dd class="ml-0">Filefolders, PurpleOrange, Tegridy</dd>
+      {% endfor %}
     </dl>
-    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="insitor-feb-2026/schaitr-interview/">Read interview with Schaitr &rarr;</a>
+    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="{{ candidate.interview }}">Read interview with {{ candidate.name }} &rarr;</a>
   </div>
-
-  <div class="hidden md:block md:row-[span_13] bg-stone-300 dark:bg-stone-700"></div>
-
-  <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_13]">
-    <h3 class="font-serif text-xl font-bold mb-0.5">Euu</h3>
-    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">Challenger</span>
-    <dl class="font-sans text-sm contents">
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Registered</dt>
-      <dd class="ml-0">19 October 2025</dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Experience</dt>
-      <dd class="ml-0">4 months</dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Key Proposal</dt>
-      <dd class="ml-0">Loans for bases for gateway parts</dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Terms Served</dt>
-      <dd class="ml-0">
-        <ul class="list-none p-0 text-[.82rem]">
-          <li class="py-0.5">Promitor &mdash; 2&times; parliament</li>
-          <li class="py-0.5">Avalon &mdash; 1&times; parliament</li>
-          <li class="py-0.5">Boucher &mdash; 1&times; parliament</li>
-        </ul>
-      </dd>
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Allies</dt>
-      <dd class="ml-0">heiheihahei, Tnn</dd>
-    </dl>
-    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="#">Read interview with Euu &rarr;</a>
-  </div>
-
+  {% endfor %}
 </div>
 
 <!-- Article -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<p class="text-[1.1rem] mb-3 leading-relaxed">Elections were first introduced in December 2019 with the Expanse update. In June 2024, the Realpolitik update revamped the system, replacing solo governors with parliaments.</p>
-<p class="text-[1.1rem] mb-3 leading-relaxed">Elections are usually quite boring in Prosperous Universe. Being in the government is considered a thankless task, so the old governor and their parliament usually get reelected without issues. However, upcoming elections on Promitor, the most populous planet in the universe, and also some neighbouring planets, are unusually heated. The incumbent government of Schaitr, who has 3.5 years of playtime experience, is challenged by the newcomer Euu, who has 4 months of experience.</p>
+<div class="text-[1.1rem] leading-relaxed">
+  {{ content | safe }}
+</div>
 
 <!-- Timeline -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
 <h2 class="font-serif text-xl font-bold mb-1.5">Timeline</h2>
 <ul class="list-none p-0 divide-y divide-stone-300 dark:divide-stone-700">
+  {% for event in timeline %}
   <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
-    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">5 Feb 2026</div>
-    <div>Schaitr asks in Promitor chat how people feel about taxes. Notes that there's 900k/week in surplus taxes and 40M in the coffers.</div>
+    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">{{ event.date }}</div>
+    <div>{{ event.text }}</div>
   </li>
-  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
-    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">6 Feb 2026</div>
-    <div>Schaitr assumes that COSM's position is to use the tax revenue for loans. He announces that he won't be running in the upcoming elections.</div>
-  </li>
-  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
-    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">8 Feb 2026</div>
-    <div>Euu announces their candidacy. Andy97 jumps into the ring. A heated conversation follows, causing Saganaki to get specific about chat rules in the Official APEX Help Channel the next day.</div>
-  </li>
-  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
-    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">9 Feb 2026</div>
-    <div>GuyKid88 announces their candidacy. Three hours later, Schaitr says COSM told him loans were not their position and re-enters the race. GuyKid88 and Andy97 endorse Schaitr.</div>
-  </li>
+  {% endfor %}
 </ul>
 
 </main>
