@@ -85,7 +85,7 @@
 {% block scripts %}
 <!-- D3.js Charts -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="voting_data.js"></script>
+<script>var votingData = {{ votingData | dump | safe }};</script>
 <script>
 (function(){
   var DURATION_H = 7 * 24; // 168 hours
