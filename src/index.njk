@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Insitorian - Elections Special</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" href="monocle.png">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = { darkMode: 'class' }
-</script>
-<script>
-(function(){
-  var s = localStorage.getItem('theme');
-  if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
-})();
-</script>
+---
+permalink: index.html
+---
+{% extends "base.njk" %}
+
+{% set isHome = true %}
+{% set title = "The Insitorian - Elections Special" %}
+{% set rootPath = "" %}
+
+{% block head %}
 <style>
   .leg-schaitr::before,
   .leg-euu::before,
@@ -37,22 +27,9 @@ tailwind.config = { darkMode: 'class' }
   .dark .leg-neutral::before { background: #a8a29e; }
   .chart-pane svg { width: 100%; height: auto; display: block; }
 </style>
-</head>
-<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-serif leading-normal transition-colors">
+{% endblock %}
 
-<!-- Masthead -->
-<header class="text-center pt-7 pb-[18px] border-b-4 border-double border-stone-300 dark:border-stone-700 relative">
-  <button onclick="toggleTheme()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-stone-300 dark:border-stone-600 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors text-sm cursor-pointer" aria-label="Toggle theme">
-    <span class="dark:hidden">&#x263E;</span>
-    <span class="hidden dark:inline">&#x2600;</span>
-  </button>
-  <div class="max-w-[960px] mx-auto px-5">
-    <div class="font-sans text-xs uppercase tracking-[.12em] text-stone-500 dark:text-stone-400 mb-1">Elections Special</div>
-    <h1 class="text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5"><img src="monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</h1>
-    <div class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
-  </div>
-</header>
-
+{% block content %}
 <main class="max-w-[960px] mx-auto px-5">
 
 <!-- Charts -->
@@ -104,7 +81,7 @@ tailwind.config = { darkMode: 'class' }
       <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Allies</dt>
       <dd class="ml-0">Filefolders, PurpleOrange, Tegridy</dd>
     </dl>
-    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="schaitr.html">Read interview with Schaitr &rarr;</a>
+    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="insitor-feb-2026/schaitr-interview/">Read interview with Schaitr &rarr;</a>
   </div>
 
   <div class="hidden md:block md:row-[span_13] bg-stone-300 dark:bg-stone-700"></div>
@@ -162,12 +139,10 @@ tailwind.config = { darkMode: 'class' }
   </li>
 </ul>
 
-<!-- Footer -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; by untech and raylu</div>
-
 </main>
+{% endblock %}
 
+{% block scripts %}
 <!-- D3.js Charts -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="voting_data.js"></script>
@@ -420,15 +395,11 @@ tailwind.config = { darkMode: 'class' }
   }
 
   drawAll();
-
-  window.toggleTheme = function(){
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme',
-      document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    drawAll();
-  };
+  window._drawAllCharts = drawAll;
 })();
 </script>
+{% endblock %}
 
-</body>
-</html>
+{% block onThemeToggle %}
+if(window._drawAllCharts) window._drawAllCharts();
+{% endblock %}

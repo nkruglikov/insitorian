@@ -1,43 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interview with Schaitr - The Insitorian</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" href="monocle.png">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = { darkMode: 'class' }
-</script>
-<script>
-(function(){
-  var s = localStorage.getItem('theme');
-  if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
-})();
-</script>
-</head>
-<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-serif leading-normal transition-colors">
+---
+permalink: insitor-feb-2026/schaitr-interview/index.html
+---
+{% extends "base.njk" %}
 
-<!-- Masthead -->
-<header class="text-center pt-7 pb-[18px] border-b-4 border-double border-stone-300 dark:border-stone-700 relative">
-  <button onclick="toggleTheme()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-stone-300 dark:border-stone-600 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors text-sm cursor-pointer" aria-label="Toggle theme">
-    <span class="dark:hidden">&#x263E;</span>
-    <span class="hidden dark:inline">&#x2600;</span>
-  </button>
-  <div class="max-w-[960px] mx-auto px-5">
-    <div class="font-sans text-xs uppercase tracking-[.12em] text-stone-500 dark:text-stone-400 mb-1">Elections Special</div>
-    <h1 class="text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5"><a href="index.html" class="hover:underline"><img src="monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</a></h1>
-    <div class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
-  </div>
-</header>
+{% set title = "Interview with Schaitr - The Insitorian" %}
+{% set rootPath = "../../" %}
 
+{% block content %}
 <main class="max-w-[680px] mx-auto px-5">
 
 <nav class="pt-5 font-sans text-[.8rem]">
-  <a href="index.html" class="text-sky-700 dark:text-sky-400 hover:underline">&larr; Back to front page</a>
+  <a href="../../" class="text-sky-700 dark:text-sky-400 hover:underline">&larr; Back to front page</a>
 </nav>
 
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
@@ -117,7 +90,7 @@ tailwind.config = { darkMode: 'class' }
     </section>
 
     <section>
-      <p class="font-bold mb-2">Before the challenge from <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">Euu<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">EndlessFrontier Capital | EUU</span></span> came, the government funds were stagnant for a very long time. Why?</p>
+      <p class="font-bold mb-2">Before the challenge from {% player "Euu" %} came, the government funds were stagnant for a very long time. Why?</p>
       <p>This is partly my fault. As I've stated multiple times, privately and publicly, the surplus will be channelled towards gateways. What I didn't do was to check in with COSM whether they could deploy the funds when they started their gateway project.</p>
     </section>
     </div>
@@ -127,8 +100,8 @@ tailwind.config = { darkMode: 'class' }
     <div class="space-y-6">
     <section>
       <p class="font-bold mb-2">Who are your running mates on each of the contested planets? Can you introduce them? How did you pick them?</p>
-      <p>On Promitor, my running mates are <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">Filefolders<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">Knott-Stone-Davis Cooperative | KSDC</span></span> and <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">PurpleOrange<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">Hydrohomies | HYDR</span></span>. They are senior officers of COSM. I believe File doesn't need to be introduced since he has been very active helping answer questions on Prom chat. PurpleOrange works quietly in the background but is the main man behind the whole gateway project for Insitor.</p>
-      <p class="mt-3">On Avalon, my running mates are Filefolders and <span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">Tegridy<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">Utnapishtim | UTNA</span></span>. Tegridy is a senior representative of the CN community.</p>
+      <p>On Promitor, my running mates are {% player "Filefolders" %} and {% player "PurpleOrange" %}. They are senior officers of COSM. I believe File doesn't need to be introduced since he has been very active helping answer questions on Prom chat. PurpleOrange works quietly in the background but is the main man behind the whole gateway project for Insitor.</p>
+      <p class="mt-3">On Avalon, my running mates are Filefolders and {% player "Tegridy" %}. Tegridy is a senior representative of the CN community.</p>
       <p class="mt-3">All of us are aligned in the vision of how we want Insitor region to be, and how public funds should be used to fund public projects that benefit all, instead of a few.</p>
     </section>
 
@@ -153,19 +126,5 @@ tailwind.config = { darkMode: 'class' }
   <p class="mt-8 font-sans text-[.82rem] text-stone-500 dark:text-stone-400">Interview conducted by <span class="font-bold text-stone-700 dark:text-stone-300">untech</span></p>
 </article>
 
-<!-- Footer -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; by untech and raylu</div>
-
 </main>
-
-<script>
-window.toggleTheme = function(){
-  document.documentElement.classList.toggle('dark');
-  localStorage.setItem('theme',
-    document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-};
-</script>
-
-</body>
-</html>
+{% endblock %}
