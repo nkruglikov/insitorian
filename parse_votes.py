@@ -9,8 +9,8 @@ from datetime import datetime, timedelta, timezone
 PLANETS = ["Promitor", "Avalon", "Boucher"]
 
 STARTS = {
-    "Promitor": datetime(2026, 2, 12, 19, 0, tzinfo=timezone.utc),
-    "Avalon": datetime(2026, 2, 12, 19, 0, tzinfo=timezone.utc),
+    "Promitor": datetime(2026, 2, 12, 20, 0, tzinfo=timezone.utc),
+    "Avalon": datetime(2026, 2, 12, 20, 0, tzinfo=timezone.utc),
     "Boucher": datetime(2026, 2, 16, 20, 0, tzinfo=timezone.utc),
 }
 
