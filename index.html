@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#x1F9D0; The Insitorian - Elections Special</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F9D0;</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { darkMode: 'class' }
+</script>
+<script>
+(function(){
+  var s = localStorage.getItem('theme');
+  if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+<style>
+  .leg-schaitr::before,
+  .leg-euu::before,
+  .leg-neutral::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .leg-schaitr::before { background: #b45309; }
+  .leg-euu::before { background: #0369a1; }
+  .leg-neutral::before { background: #78716c; }
+  .dark .leg-schaitr::before { background: #d97706; }
+  .dark .leg-euu::before { background: #0ea5e9; }
+  .dark .leg-neutral::before { background: #a8a29e; }
+  .chart-pane svg { width: 100%; height: auto; display: block; }
+</style>
+</head>
+<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-serif leading-normal transition-colors">
+
+<!-- Masthead -->
+<header class="text-center pt-7 pb-[18px] border-b-4 border-double border-stone-300 dark:border-stone-700 relative">
+  <button onclick="toggleTheme()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-stone-300 dark:border-stone-600 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors text-sm cursor-pointer" aria-label="Toggle theme">
+    <span class="dark:hidden">&#x263E;</span>
+    <span class="hidden dark:inline">&#x2600;</span>
+  </button>
+  <div class="max-w-[960px] mx-auto px-5">
+    <div class="font-sans text-xs uppercase tracking-[.12em] text-stone-500 dark:text-stone-400 mb-1">Elections Special</div>
+    <h1 class="text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5">&#x1F9D0; The Insitorian</h1>
+    <div class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
+  </div>
+</header>
+
+<main class="max-w-[960px] mx-auto px-5">
+
+<!-- Charts -->
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<h2 class="font-serif text-xl font-bold mb-1.5">Voting Progress</h2>
+<div class="flex flex-wrap justify-center gap-x-3.5 gap-y-1 mb-5 font-sans text-xs">
+  <span class="leg-schaitr">Schaitr &amp; allies</span>
+  <span class="leg-euu">Euu &amp; allies</span>
+  <span class="leg-neutral">Unaffiliated</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-[18px] mb-2">
+  <div class="chart-pane">
+    <h3 class="font-sans text-sm font-bold mb-1.5">Promitor</h3>
+    <div id="chart-promitor"></div>
+  </div>
+  <div class="chart-pane">
+    <h3 class="font-sans text-sm font-bold mb-1.5">Avalon</h3>
+    <div id="chart-avalon"></div>
+  </div>
+  <div class="chart-pane">
+    <h3 class="font-sans text-sm font-bold mb-1.5">Boucher</h3>
+    <div id="chart-boucher"></div>
+  </div>
+</div>
+
+<!-- Candidate Comparison -->
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-6 mb-2 items-stretch">
+
+  <div class="flex flex-col">
+    <h3 class="font-serif text-xl font-bold mb-0.5">Schaitr</h3>
+    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">Incumbent</span>
+    <dl class="font-sans text-sm">
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Registered</dt>
+      <dd class="ml-0">2 September 2022</dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Experience</dt>
+      <dd class="ml-0">3.5 years</dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Key Proposal</dt>
+      <dd class="ml-0">Base leases for gateway parts</dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Terms Served</dt>
+      <dd class="ml-0">
+        <ul class="list-none p-0 text-[.82rem]">
+          <li class="py-0.5">Promitor &mdash; 29&times; governor, 1&times; parliament</li>
+          <li class="py-0.5">Avalon &mdash; 7&times; governor, 13&times; parliament</li>
+          <li class="py-0.5">Boucher &mdash; 24&times; governor, 6&times; parliament</li>
+          <li class="py-0.5">Helion Prime &mdash; 15&times; governor, 4&times; parliament</li>
+        </ul>
+      </dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Allies</dt>
+      <dd class="ml-0">Filefolders, PurpleOrange, Tegridy</dd>
+    </dl>
+    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="#">Read interview with Schaitr &rarr;</a>
+  </div>
+
+  <div class="hidden md:block bg-stone-300 dark:bg-stone-700"></div>
+
+  <div class="flex flex-col">
+    <h3 class="font-serif text-xl font-bold mb-0.5">Euu</h3>
+    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">Challenger</span>
+    <dl class="font-sans text-sm">
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Registered</dt>
+      <dd class="ml-0">19 October 2025</dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Experience</dt>
+      <dd class="ml-0">4 months</dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Key Proposal</dt>
+      <dd class="ml-0">Loans for bases for gateway parts</dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Terms Served</dt>
+      <dd class="ml-0">
+        <ul class="list-none p-0 text-[.82rem]">
+          <li class="py-0.5">Promitor &mdash; 2&times; parliament</li>
+          <li class="py-0.5">Avalon &mdash; 1&times; parliament</li>
+          <li class="py-0.5">Boucher &mdash; 1&times; parliament</li>
+        </ul>
+      </dd>
+      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">Allies</dt>
+      <dd class="ml-0">heiheihahei, Tnn</dd>
+    </dl>
+    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="#">Read interview with Euu &rarr;</a>
+  </div>
+
+</div>
+
+<!-- Article -->
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<p class="text-[.95rem] mb-3 leading-relaxed">Elections were first introduced in December 2019 with the Expanse update. In June 2024, the Realpolitik update revamped the system, replacing solo governors with parliaments.</p>
+<p class="text-[.95rem] mb-3 leading-relaxed">Elections are usually quite boring in Prosperous Universe. Being in the government is considered a thankless task, so the old governor and their parliament usually get reelected without issues. However, upcoming elections on Promitor, the most populous planet in the universe, and also some neighbouring planets, are unusually heated. The incumbent government of Schaitr, who has 3.5 years of playtime experience, is challenged by the newcomer Euu, who has 4 months of experience.</p>
+
+<!-- Timeline -->
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<h2 class="font-serif text-xl font-bold mb-1.5">Timeline</h2>
+<ul class="list-none p-0 divide-y divide-stone-300 dark:divide-stone-700">
+  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
+    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">5 Feb 2026</div>
+    <div>Schaitr asks in Promitor chat how people feel about taxes. Notes that there's 900k/week in surplus taxes and 40M in the coffers.</div>
+  </li>
+  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
+    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">6 Feb 2026</div>
+    <div>Schaitr assumes that COSM's position is to use the tax revenue for loans. He announces that he won't be running in the upcoming elections.</div>
+  </li>
+  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
+    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">8 Feb 2026</div>
+    <div>Euu announces their candidacy. Andy97 jumps into the ring. A heated conversation follows, causing Saganaki to get specific about chat rules in the Official APEX Help Channel the next day.</div>
+  </li>
+  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
+    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">9 Feb 2026</div>
+    <div>GuyKid88 announces their candidacy. Three hours later, Schaitr says COSM told him loans were not their position and re-enters the race. GuyKid88 and Andy97 endorse Schaitr.</div>
+  </li>
+</ul>
+
+<!-- Footer -->
+<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; A Prosperous Universe publication &middot; All information based on publicly available in-game data</div>
+
+</main>
+
+<!-- D3.js Charts -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="voting_data.js"></script>
+<script>
+(function(){
+  var DURATION_H = 7 * 24; // 168 hours
+  var FONT = "ui-sans-serif,system-ui,sans-serif";
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var TEAMS = {
+    schaitr: ["Schaitr","Filefolders","PurpleOrange","Tegridy"],
+    euu: ["Euu","heiheihahei","Tnn"]
+  };
+
+  function colors(){
+    var dark = document.documentElement.classList.contains('dark');
+    return {
+      line1:   dark ? '#d97706' : '#b45309',
+      line2:   dark ? '#0ea5e9' : '#0369a1',
+      neutral: dark ? '#a8a29e' : '#78716c',
+      grid:    dark ? '#57534e' : '#d6d3d1',
+      text:    dark ? '#a8a29e' : '#78716c',
+      tipBg:   dark ? '#1c1917' : '#fff'
+    };
+  }
+
+  function teamColor(name, c){
+    if(TEAMS.schaitr.indexOf(name)>=0) return c.line1;
+    if(TEAMS.euu.indexOf(name)>=0) return c.line2;
+    return c.neutral;
+  }
+
+  function draw(sel, planet){
+    var c = colors();
+    var container = document.querySelector(sel);
+    var w = container.clientWidth;
+    var h = Math.round(w * 0.8);
+    var m = {top:14,right:34,bottom:26,left:30};
+
+    var svg = d3.select(sel).append("svg")
+      .attr("viewBox","0 0 "+w+" "+h)
+      .attr("preserveAspectRatio","xMidYMid meet");
+
+    if(!planet.started){
+      var startDate = new Date(planet.start);
+      var now = new Date();
+      var diffH = Math.max(0, Math.round((startDate - now) / 3600000));
+      svg.append("text")
+        .attr("x",w/2).attr("y",h/2)
+        .attr("text-anchor","middle").attr("font-size","13px")
+        .attr("font-family",FONT).attr("fill",c.text)
+        .text("Starts in ~"+diffH+"h");
+      return;
+    }
+
+    // Find candidates who appear in top 5 at any snapshot
+    var snapshots = {};
+    planet.series.forEach(function(s){
+      s.data.forEach(function(d){
+        if(!snapshots[d[0]]) snapshots[d[0]]=[];
+        snapshots[d[0]].push({name:s.name, votes:d[1]});
+      });
+    });
+    var visible = {};
+    Object.keys(snapshots).forEach(function(h){
+      var snap = snapshots[h].slice().sort(function(a,b){return b.votes-a.votes;});
+      var cutoff = snap.length>=5 ? snap[4].votes : 0;
+      for(var i=0;i<snap.length;i++){
+        if(i<5 || (cutoff>0 && snap[i].votes>=cutoff)) visible[snap[i].name]=1;
+      }
+    });
+    var lines = [];
+    planet.series.forEach(function(s){
+      if(!visible[s.name]) return;
+      lines.push([s.data, teamColor(s.name,c), s.name]);
+    });
+    var all = [];
+    lines.forEach(function(l){all=all.concat(l[0]);});
+    var yMax = d3.max(all, function(d){return d[1];}) || 1;
+
+    var x = d3.scaleLinear().domain([0, DURATION_H]).range([m.left, w-m.right]);
+    var y = d3.scaleLinear().domain([0, yMax*1.15]).range([h-m.bottom, m.top]);
+
+    // Grid
+    svg.selectAll(".grid")
+      .data(y.ticks(4))
+      .join("line")
+        .attr("x1",m.left).attr("x2",w-m.right)
+        .attr("y1",function(d){return y(d);}).attr("y2",function(d){return y(d);})
+        .attr("stroke",c.grid).attr("stroke-dasharray","2,3");
+
+    // X axis - one tick per day, showing date
+    var startMs = new Date(planet.start).getTime();
+    var months = MONTHS;
+    svg.append("g")
+      .attr("transform","translate(0,"+(h-m.bottom)+")")
+      .call(d3.axisBottom(x)
+        .tickValues([0,24,48,72,96,120,144,168])
+        .tickFormat(function(d){
+          var dt = new Date(startMs + d*3600000);
+          return dt.getDate();
+        }))
+      .call(function(g){g.select(".domain").attr("stroke",c.grid);})
+      .call(function(g){g.selectAll(".tick text").attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text);})
+      .call(function(g){g.selectAll(".tick line").attr("stroke",c.grid);});
+
+    // Month label on first tick
+    var firstDt = new Date(startMs);
+    svg.append("text")
+      .attr("x",m.left).attr("y",h-2)
+      .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
+      .text(months[firstDt.getMonth()]);
+
+    // Y axis
+    svg.append("g")
+      .attr("transform","translate("+m.left+",0)")
+      .call(d3.axisLeft(y).ticks(4).tickFormat(d3.format("d")))
+      .call(function(g){g.select(".domain").remove();})
+      .call(function(g){g.selectAll(".tick text").attr("font-size","10px").attr("font-family",FONT).attr("fill",c.text);})
+      .call(function(g){g.selectAll(".tick line").remove();});
+
+    var line = d3.line()
+      .x(function(d){return x(d[0]);})
+      .y(function(d){return y(d[1]);})
+      .curve(d3.curveMonotoneX);
+
+    // Lines - all same thickness, colored by team
+    lines.forEach(function(l){
+      if(!l[0].length) return;
+      svg.append("path").datum(l[0])
+        .attr("fill","none").attr("stroke",l[1]).attr("stroke-width",2).attr("d",line);
+    });
+
+    // End dots + name labels, grouped by vote count
+    var labelMap = {};
+    lines.forEach(function(l){
+      if(!l[0].length) return;
+      var last = l[0][l[0].length-1];
+      var lx = x(last[0]), ly = y(last[1]);
+      svg.append("circle").attr("cx",lx).attr("cy",ly).attr("r",3).attr("fill",l[1]);
+      var key = last[1];
+      if(!labelMap[key]) labelMap[key] = {lx:lx, ly:ly+3, entries:[]};
+      labelMap[key].entries.push({name:l[2], col:l[1]});
+    });
+    var groups = Object.keys(labelMap).map(function(k){return labelMap[k];});
+    groups.sort(function(a,b){return a.ly-b.ly;});
+    for(var i=1;i<groups.length;i++){
+      if(groups[i].ly-groups[i-1].ly<10) groups[i].ly=groups[i-1].ly+10;
+    }
+    groups.forEach(function(g){
+      var flipLeft = g.lx > w-70;
+      var txt = svg.append("text")
+        .attr("x", flipLeft ? g.lx-6 : g.lx+6)
+        .attr("y", g.ly)
+        .attr("text-anchor", flipLeft ? "end" : "start")
+        .attr("font-size","10px").attr("font-family",FONT)
+        .attr("font-weight","600");
+      g.entries.forEach(function(e,i){
+        if(i>0) txt.append("tspan").attr("fill",c.text).text(", ");
+        txt.append("tspan").attr("fill",e.col).text(e.name);
+      });
+    });
+
+    // Hover interaction
+    var snapSet = {};
+    all.forEach(function(d){snapSet[d[0]]=1;});
+    var snapHours = Object.keys(snapSet).map(Number).sort(function(a,b){return a-b;});
+    var hoverLine = svg.append("line")
+      .attr("y1",m.top).attr("y2",h-m.bottom)
+      .attr("stroke",c.text).attr("stroke-width",0.75)
+      .attr("stroke-dasharray","3,3").style("opacity",0);
+
+    var tipX = w-m.right;
+    var tipY = m.top;
+    var tipBg = svg.append("rect")
+      .attr("rx",3).attr("ry",3)
+      .attr("fill",c.tipBg)
+      .attr("stroke",c.grid).attr("stroke-width",0.5)
+      .style("opacity",0);
+    var tipG = svg.append("g").style("opacity",0);
+
+    svg.append("rect")
+      .attr("x",m.left).attr("y",m.top)
+      .attr("width",w-m.left-m.right).attr("height",h-m.top-m.bottom)
+      .attr("fill","none").attr("pointer-events","all")
+      .on("mousemove",function(event){
+        var mx = d3.pointer(event,this)[0];
+        var hoverH = x.invert(mx);
+        var nearest = snapHours.reduce(function(a,b){
+          return Math.abs(b-hoverH)<Math.abs(a-hoverH)?b:a;
+        });
+        var idx = snapHours.indexOf(nearest);
+        hoverLine.attr("x1",x(nearest)).attr("x2",x(nearest)).style("opacity",1);
+        svg.selectAll(".hover-dot").remove();
+        tipG.selectAll("*").remove();
+        tipG.style("opacity",1);
+
+        var dt = new Date(startMs + nearest*3600000);
+        var dateStr = dt.getDate()+" "+months[dt.getMonth()]+" "+
+          String(dt.getHours()).padStart(2,"0")+":"+String(dt.getMinutes()).padStart(2,"0");
+
+        tipG.append("text")
+          .attr("x",tipX-4).attr("y",tipY+11)
+          .attr("text-anchor","end")
+          .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
+          .text(dateStr);
+
+        // Sort by votes descending at this snapshot
+        var entries = [];
+        lines.forEach(function(l){
+          if(!l[0][idx]) return;
+          entries.push({pts:l[0], col:l[1], name:l[2], v:l[0][idx][1]});
+        });
+        entries.sort(function(a,b){return b.v-a.v;});
+
+        var ty = tipY+11;
+        entries.forEach(function(e){
+          ty += 10;
+          svg.append("circle").attr("class","hover-dot")
+            .attr("cx",x(nearest)).attr("cy",y(e.v))
+            .attr("r",4).attr("fill",e.col).attr("opacity",0.4);
+          tipG.append("text")
+            .attr("x",tipX-4).attr("y",ty)
+            .attr("text-anchor","end")
+            .attr("font-size","9px").attr("font-family",FONT)
+            .attr("font-weight","600").attr("fill",e.col)
+            .text(e.name+" "+e.v);
+        });
+
+        var tipW = 95, tipH = ty-tipY+4;
+        tipBg
+          .attr("x",tipX-tipW-2).attr("y",tipY)
+          .attr("width",tipW+2).attr("height",tipH)
+          .style("opacity",1);
+      })
+      .on("mouseleave",function(){
+        hoverLine.style("opacity",0);
+        tipG.style("opacity",0);
+        tipBg.style("opacity",0);
+        svg.selectAll(".hover-dot").remove();
+      });
+  }
+
+  function drawAll(){
+    ["chart-promitor","chart-avalon","chart-boucher"].forEach(function(id){
+      document.getElementById(id).innerHTML = "";
+    });
+    draw("#chart-promitor", votingData.promitor);
+    draw("#chart-avalon",   votingData.avalon);
+    draw("#chart-boucher",  votingData.boucher);
+  }
+
+  drawAll();
+
+  window.toggleTheme = function(){
+    document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme',
+      document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    drawAll();
+  };
+})();
+</script>
+
+</body>
+</html>
