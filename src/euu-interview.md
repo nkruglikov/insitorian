@@ -11,10 +11,8 @@ templateEngineOverride: njk,md
 
 ## Background
 
-**First, I'd like to talk a bit about your background so that
-voters who are not fully familiar with you can get to know you
-better. How did you learn about PrUn? What attracted you, and
-what made you stay there?**
+**How did you learn about PrUn? What attracted you, and what
+made you stay there?**
 
 A friend introduced me to this game. I found the gameplay
 interesting, and playing it with friends has been very enjoyable.

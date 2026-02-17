@@ -19,7 +19,7 @@ I gave it a try because it sounded interesting. I have this
 thing for making plans so things run smoothly (e.g. management
 games), so this scratched that itch somewhat.
 
-**What are your long-term goals in-game currently?**
+**What are your current long-term goals in-game?**
 
 My in-game goals have been consistently making sure new players
 feel welcome, and providing support for them where I can. The
@@ -73,7 +73,7 @@ open to Promitor folks for the longest of time. However, I
 still offer the subsidised newbie ship upgrade packs to anyone,
 not just people from Insitor.
 
-**Why are you interested in a position of power /
+**Why are you interested in a position of power or
 responsibility? Do you usually take such positions in other
 games or in real life?**
 
@@ -189,7 +189,7 @@ effort.
 **One notable aspect of this election is that the group who
 oppose you seems to be exclusively Chinese-speaking. Is this
 election a power struggle between Chinese- and English-speaking
-fractions? Is the divide caused mostly by language and
+factions? Is the divide caused mostly by language and
 technology barriers, or are there cultural differences as
 well?**
 
@@ -206,7 +206,7 @@ misunderstandings, even down to asking them to type in Mandarin
 instead of using translation softwares.
 
 **Speaking of which, are you planning to represent both
-language fractions, or are you catering more to one of the
+language factions, or are you catering more to one of the
 groups?**
 
 I cater to anyone in the Insitor region. As stated earlier, I
