@@ -64,6 +64,16 @@ timeline:
       Schaitr says COSM told him loans were not their position
       and re-enters the race. GuyKid88 and Andy97 endorse
       Schaitr.
+  - date: "13 Feb 2026"
+    text: >-
+      A surge of new users land on Promitor. Accusations of
+      vote fraud are made. It's unclear whether they are all
+      from a recent ad.
+  - date: "16 Feb 2026"
+    text: >-
+      molp publishes <a href="https://prosperousuniverse.com/blog/2026/02/16/rules-are-rules-518">dev log #518</a>,
+      calling the elections "historic" and deleting 126
+      accounts.
 ---
 
 Elections were first introduced in December 2019 with the
