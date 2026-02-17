@@ -39,7 +39,7 @@ candidates:
           - "Boucher — 1× parliament"
       - label: Allies
         value: "heiheihahei, Tnn"
-    interview: "#"
+    interview: "insitor-feb-2026/euu-interview/"
 
 timeline:
   - date: "5 Feb 2026"
