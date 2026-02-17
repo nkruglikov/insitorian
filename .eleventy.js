@@ -17,6 +17,15 @@ module.exports = function (eleventyConfig) {
     return `<span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">${name}<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">${p.company} | ${p.ticker}</span></span>`;
   });
 
+  eleventyConfig.addPairedShortcode("zh", function(content) {
+    const ps = content.trim().split(/\n\n+/)
+      .map((p, i) => {
+        const cls = i > 0 ? ' class="mt-3"' : '';
+        return `<p${cls}>${p.replace(/\n/g, "").trim()}</p>`;
+      }).join("\n");
+    return `\n<div class="lang-zh hidden">${ps}</div>\n`;
+  });
+
   eleventyConfig.amendLibrary("md", mdLib => {
     mdLib.renderer.rules.heading_open = function(tokens, idx, options, env, self) {
       if (tokens[idx].tag === 'h2') {

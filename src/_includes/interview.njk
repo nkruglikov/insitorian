@@ -11,7 +11,12 @@
 
 <article>
   <h1 class="font-serif text-2xl md:text-3xl font-bold mb-2 leading-tight">{{ heading }}</h1>
-  <p class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400 mb-6">{{ subtitle }}</p>
+  <p class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400 {{ 'mb-2' if translated else 'mb-6' }}">{{ subtitle }}</p>
+  {% if translated %}
+  <p class="font-sans text-[.8rem] mb-6">
+    <button id="lang-toggle" onclick="toggleLang()" class="text-sky-700 dark:text-sky-400 hover:underline cursor-pointer">Show original (中文)</button>
+  </p>
+  {% endif %}
 
   <div class="text-[1.05rem] leading-relaxed [&>:first-child]:mt-0">
     {{ content | safe }}
@@ -21,4 +26,26 @@
 </article>
 
 </main>
+{% endblock %}
+
+{% block scripts %}
+{% if translated %}
+<script>
+function toggleLang(){
+  var btn=document.getElementById('lang-toggle');
+  var zhEls=document.querySelectorAll('.lang-zh');
+  var toZh=zhEls[0].classList.contains('hidden');
+  zhEls.forEach(function(zh){
+    zh.classList.toggle('hidden',!toZh);
+    var el=zh.previousElementSibling;
+    while(el){
+      if(el.tagName==='H2'||(el.tagName==='P'&&el.querySelector('strong')))break;
+      if(el.tagName==='P')el.classList.toggle('hidden',toZh);
+      el=el.previousElementSibling;
+    }
+  });
+  btn.textContent=toZh?'Show translation (English)':'Show original (中文)';
+}
+</script>
+{% endif %}
 {% endblock %}
