@@ -168,7 +168,7 @@
     var y = d3.scaleLinear().domain([0, yMax*1.15]).range([chartH-m.bottom, m.top]);
 
     // Section labels
-    svg.append("text")
+    var votesLabel = svg.append("text")
       .attr("x",w/2).attr("y",m.top - 4)
       .attr("text-anchor","middle")
       .attr("font-size","12px").attr("font-family",FONT).attr("font-weight","700")
@@ -224,42 +224,61 @@
       .y(function(d){return y(d[1]);})
       .curve(d3.curveMonotoneX);
 
-    // Lines - all same thickness, colored by team
+    // Lines: full paths (fade on hover) + clipped duplicates (solid up to hover point)
+    var clipId = sel.replace("#","") + "-clip";
+    var clipRect = svg.append("defs").append("clipPath").attr("id",clipId)
+      .append("rect").attr("x",0).attr("y",0).attr("height",chartH).attr("width",0);
+    var fullPaths = [];
     lines.forEach(function(l){
       if(!l[0].length) return;
-      svg.append("path").datum(l[0])
-        .attr("fill","none").attr("stroke",l[1]).attr("stroke-width",2).attr("d",line);
+      fullPaths.push(svg.append("path").datum(l[0])
+        .attr("fill","none").attr("stroke",l[1]).attr("stroke-width",2).attr("d",line));
+    });
+    var clippedPaths = [];
+    lines.forEach(function(l){
+      if(!l[0].length) return;
+      clippedPaths.push(svg.append("path").datum(l[0])
+        .attr("fill","none").attr("stroke",l[1]).attr("stroke-width",2).attr("d",line)
+        .attr("clip-path","url(#"+clipId+")")
+        .style("display","none"));
     });
 
-    // End dots + name labels, grouped by vote count
-    var labelMap = {};
-    lines.forEach(function(l){
-      if(!l[0].length) return;
-      var last = l[0][l[0].length-1];
-      var lx = x(last[0]), ly = y(last[1]);
-      svg.append("circle").attr("cx",lx).attr("cy",ly).attr("r",3).attr("fill",l[1]);
-      var key = last[1];
-      if(!labelMap[key]) labelMap[key] = {lx:lx, ly:ly+3, entries:[]};
-      labelMap[key].entries.push({name:l[2], col:l[1]});
-    });
-    var groups = Object.keys(labelMap).map(function(k){return labelMap[k];});
-    groups.sort(function(a,b){return a.ly-b.ly;});
-    for(var i=1;i<groups.length;i++){
-      if(groups[i].ly-groups[i-1].ly<10) groups[i].ly=groups[i-1].ly+10;
-    }
-    groups.forEach(function(g){
-      var flipLeft = g.lx > w-70;
-      var txt = svg.append("text")
-        .attr("x", flipLeft ? g.lx-6 : g.lx+6)
-        .attr("y", g.ly)
-        .attr("text-anchor", flipLeft ? "end" : "start")
-        .attr("font-size","10px").attr("font-family",FONT)
-        .attr("font-weight","600");
-      g.entries.forEach(function(e,i){
-        if(i>0) txt.append("tspan").attr("fill",c.text).text(", ");
-        txt.append("tspan").attr("fill",e.col).text(e.name);
+    // Dynamic end dots + labels
+    var labelG = svg.append("g");
+    function updateLabels(idx, showNumbers){
+      labelG.selectAll("*").remove();
+      var labelMap = {};
+      lines.forEach(function(l){
+        if(!l[0].length || !l[0][idx]) return;
+        var pt = l[0][idx];
+        var lx = x(pt[0]), ly = y(pt[1]);
+        labelG.append("circle").attr("cx",lx).attr("cy",ly).attr("r",3).attr("fill",l[1]);
+        var key = pt[1];
+        if(!labelMap[key]) labelMap[key] = {lx:lx, ly:ly+3, entries:[]};
+        labelMap[key].entries.push({name:l[2], col:l[1], v:pt[1]});
       });
-    });
+      var groups = Object.keys(labelMap).map(function(k){return labelMap[k];});
+      groups.sort(function(a,b){return a.ly-b.ly;});
+      for(var i=1;i<groups.length;i++){
+        if(groups[i].ly-groups[i-1].ly<10) groups[i].ly=groups[i-1].ly+10;
+      }
+      groups.forEach(function(g){
+        var flipLeft = g.lx > w-70;
+        var txt = labelG.append("text")
+          .attr("x", flipLeft ? g.lx-6 : g.lx+6)
+          .attr("y", g.ly)
+          .attr("text-anchor", flipLeft ? "end" : "start")
+          .attr("font-size","10px").attr("font-family",FONT)
+          .attr("font-weight","600");
+        g.entries.forEach(function(e,i){
+          if(i>0) txt.append("tspan").attr("fill",c.text).text(", ");
+          txt.append("tspan").attr("fill",e.col).text(showNumbers ? e.name+" "+e.v : e.name);
+        });
+      });
+    }
+    // Initial state: labels at last data point, no numbers
+    var lastIdx = lines[0] && lines[0][0].length ? lines[0][0].length - 1 : 0;
+    updateLabels(lastIdx, false);
 
     // Hover interaction
     var snapSet = {};
@@ -269,15 +288,9 @@
       .attr("y1",m.top).attr("y2",chartH-m.bottom)
       .attr("stroke",c.text).attr("stroke-width",0.75)
       .attr("stroke-dasharray","3,3").style("opacity",0);
-
-    var tipX = w-m.right;
-    var tipY = m.top;
-    var tipBg = svg.append("rect")
-      .attr("rx",3).attr("ry",3)
-      .attr("fill",c.tipBg)
-      .attr("stroke",c.grid).attr("stroke-width",0.5)
+    var hoverDate = svg.append("text")
+      .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
       .style("opacity",0);
-    var tipG = svg.append("g").style("opacity",0);
 
     // Seat circles — drawn in main SVG below chart
     function top5AtSnapshot(hourKey){
@@ -330,69 +343,100 @@
     var lastSnap = snapHours[snapHours.length-1];
     updateSeats(top5AtSnapshot(lastSnap));
 
-    svg.append("rect")
-      .attr("x",m.left).attr("y",m.top)
-      .attr("width",w-m.left-m.right).attr("height",chartH-m.top-m.bottom)
-      .attr("fill","none").attr("pointer-events","all")
-      .on("mousemove",function(event){
-        var mx = d3.pointer(event,this)[0];
-        var hoverH = x.invert(mx);
-        var nearest = snapHours.reduce(function(a,b){
-          return Math.abs(b-hoverH)<Math.abs(a-hoverH)?b:a;
-        });
-        var idx = snapHours.indexOf(nearest);
-        hoverLine.attr("x1",x(nearest)).attr("x2",x(nearest)).style("opacity",1);
-        svg.selectAll(".hover-dot").remove();
-        tipG.selectAll("*").remove();
-        tipG.style("opacity",1);
+    // Use HTML overlay for reliable touch handling
+    var overlay = document.createElement("div");
+    overlay.style.cssText = "position:absolute;top:0;left:0;width:100%;height:"+(chartH/h*100)+"%;touch-action:pan-y";
+    container.style.position = "relative";
+    container.appendChild(overlay);
 
-        var dt = new Date(startMs + nearest*3600000);
-        var dateStr = dt.getDate()+" "+months[dt.getMonth()]+" "+
-          String(dt.getHours()).padStart(2,"0")+":"+String(dt.getMinutes()).padStart(2,"0");
+    var pointerActive = false, startX = 0, startY = 0, locked = false, hoverSticky = false;
+    overlay.addEventListener("pointerdown",function(e){
+      startX = e.clientX; startY = e.clientY;
+      pointerActive = true; locked = false;
+      hoverSticky = false;
+    });
+    document.addEventListener("pointerdown",function(e){
+      if(hoverSticky && e.target !== overlay){
+        hoverSticky = false;
+        onLeave();
+      }
+    });
+    overlay.addEventListener("pointermove",function(e){
+      if(!pointerActive && e.pointerType !== "mouse") return;
+      if(e.pointerType === "mouse"){
+        doHover(e); return;
+      }
+      if(!locked){
+        var dx = Math.abs(e.clientX - startX);
+        var dy = Math.abs(e.clientY - startY);
+        if(dx < 4 && dy < 4) return;
+        if(dx > dy){ locked = true; hoverSticky = false; overlay.setPointerCapture(e.pointerId); overlay.style.touchAction = "none"; }
+        else{ pointerActive = false; return; }
+      }
+      doHover(e);
+    });
+    overlay.addEventListener("pointerup",function(e){
+      if(e.pointerType !== "mouse"){
+        if(!locked){
+          // Tap: show hover at tap position and stick
+          doHover(e);
+        }
+        hoverSticky = true;
+      }
+      pointerActive = false; locked = false;
+      overlay.style.touchAction = "pan-y";
+    });
+    overlay.addEventListener("pointerleave",function(e){
+      if(e.pointerType === "mouse") onLeave();
+    });
 
-        tipG.append("text")
-          .attr("x",tipX-4).attr("y",tipY+11)
-          .attr("text-anchor","end")
-          .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
-          .text(dateStr);
+    function doHover(e){
+      var svgRect = container.querySelector("svg").getBoundingClientRect();
+      var svgX = (e.clientX - svgRect.left) / svgRect.width * w;
+      onHover(x.invert(svgX));
+    }
 
-        // Sort by votes descending at this snapshot
-        var entries = [];
-        lines.forEach(function(l){
-          if(!l[0][idx]) return;
-          entries.push({pts:l[0], col:l[1], name:l[2], v:l[0][idx][1]});
-        });
-        entries.sort(function(a,b){return b.v-a.v;});
-
-        var ty = tipY+11;
-        entries.forEach(function(e){
-          ty += 10;
-          svg.append("circle").attr("class","hover-dot")
-            .attr("cx",x(nearest)).attr("cy",y(e.v))
-            .attr("r",4).attr("fill",e.col).attr("opacity",0.4);
-          tipG.append("text")
-            .attr("x",tipX-4).attr("y",ty)
-            .attr("text-anchor","end")
-            .attr("font-size","9px").attr("font-family",FONT)
-            .attr("font-weight","600").attr("fill",e.col)
-            .text(e.name+" "+e.v);
-        });
-
-        var tipW = 95, tipH = ty-tipY+4;
-        tipBg
-          .attr("x",tipX-tipW-2).attr("y",tipY)
-          .attr("width",tipW+2).attr("height",tipH)
-          .style("opacity",1);
-
-        updateSeats(top5AtSnapshot(nearest));
-      })
-      .on("mouseleave",function(){
-        hoverLine.style("opacity",0);
-        tipG.style("opacity",0);
-        tipBg.style("opacity",0);
-        svg.selectAll(".hover-dot").remove();
-        updateSeats(top5AtSnapshot(lastSnap));
+    function onHover(hoverH){
+      var nearest = snapHours.reduce(function(a,b){
+        return Math.abs(b-hoverH)<Math.abs(a-hoverH)?b:a;
       });
+      var idx = snapHours.indexOf(nearest);
+      var hx = x(nearest);
+      hoverLine.attr("x1",hx).attr("x2",hx).style("opacity",1);
+
+      var dt = new Date(startMs + nearest*3600000);
+      var dateStr = dt.getDate()+" "+months[dt.getMonth()]+" "+
+        String(dt.getHours()).padStart(2,"0")+":"+String(dt.getMinutes()).padStart(2,"0");
+      var rightSide = hx > w/2;
+      hoverDate
+        .attr("x", rightSide ? hx-4 : hx+4)
+        .attr("y", m.top + 10)
+        .attr("text-anchor", rightSide ? "end" : "start")
+        .text(dateStr).style("opacity",1);
+
+      // Fade full paths, clip solid duplicates to hover point
+      clipRect.attr("width", x(nearest));
+      fullPaths.forEach(function(p){p.attr("opacity",0.2);});
+      clippedPaths.forEach(function(p){p.style("display",null);});
+
+      // Update labels to hover point with numbers
+      updateLabels(idx, true);
+
+      updateSeats(top5AtSnapshot(nearest));
+    }
+    function onLeave(){
+      hoverLine.style("opacity",0);
+      hoverDate.style("opacity",0);
+
+      // Restore full paths, hide clipped duplicates
+      fullPaths.forEach(function(p){p.attr("opacity",1);});
+      clippedPaths.forEach(function(p){p.style("display","none");});
+
+      // Restore labels to end, no numbers
+      updateLabels(lastIdx, false);
+
+      updateSeats(top5AtSnapshot(lastSnap));
+    }
   }
 
   function drawAll(){
