@@ -89,7 +89,7 @@
 <script>
 (function(){
   var DURATION_H = 7 * 24; // 168 hours
-  var FONT = "ui-sans-serif,system-ui,sans-serif";
+  var FONT = getComputedStyle(document.querySelector('.font-sans')).fontFamily;
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var TEAMS = {
     schaitr: ["Schaitr","Filefolders","PurpleOrange","Tegridy"],
@@ -118,7 +118,9 @@
     var c = colors();
     var container = document.querySelector(sel);
     var w = container.clientWidth;
-    var h = Math.round(w * 0.8);
+    var chartH = Math.round(w * 0.8);
+    var seatZone = 90;
+    var h = chartH + seatZone;
     var m = {top:14,right:34,bottom:26,left:30};
 
     var svg = d3.select(sel).append("svg")
@@ -163,7 +165,21 @@
     var yMax = d3.max(all, function(d){return d[1];}) || 1;
 
     var x = d3.scaleLinear().domain([0, DURATION_H]).range([m.left, w-m.right]);
-    var y = d3.scaleLinear().domain([0, yMax*1.15]).range([h-m.bottom, m.top]);
+    var y = d3.scaleLinear().domain([0, yMax*1.15]).range([chartH-m.bottom, m.top]);
+
+    // Section labels
+    svg.append("text")
+      .attr("x",w/2).attr("y",m.top - 4)
+      .attr("text-anchor","middle")
+      .attr("font-size","12px").attr("font-family",FONT).attr("font-weight","700")
+      .attr("text-transform","uppercase").attr("letter-spacing","0.05em")
+      .attr("fill",c.text).text("Votes");
+    svg.append("text")
+      .attr("x",w/2).attr("y",chartH + 8)
+      .attr("text-anchor","middle")
+      .attr("font-size","12px").attr("font-family",FONT).attr("font-weight","700")
+      .attr("text-transform","uppercase").attr("letter-spacing","0.05em")
+      .attr("fill",c.text).text("Seats");
 
     // Grid
     svg.selectAll(".grid")
@@ -177,7 +193,7 @@
     var startMs = new Date(planet.start).getTime();
     var months = MONTHS;
     svg.append("g")
-      .attr("transform","translate(0,"+(h-m.bottom)+")")
+      .attr("transform","translate(0,"+(chartH-m.bottom)+")")
       .call(d3.axisBottom(x)
         .tickValues([0,24,48,72,96,120,144,168])
         .tickFormat(function(d){
@@ -191,7 +207,7 @@
     // Month label on first tick
     var firstDt = new Date(startMs);
     svg.append("text")
-      .attr("x",m.left).attr("y",h-2)
+      .attr("x",m.left).attr("y",chartH-2)
       .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
       .text(months[firstDt.getMonth()]);
 
@@ -250,7 +266,7 @@
     all.forEach(function(d){snapSet[d[0]]=1;});
     var snapHours = Object.keys(snapSet).map(Number).sort(function(a,b){return a-b;});
     var hoverLine = svg.append("line")
-      .attr("y1",m.top).attr("y2",h-m.bottom)
+      .attr("y1",m.top).attr("y2",chartH-m.bottom)
       .attr("stroke",c.text).attr("stroke-width",0.75)
       .attr("stroke-dasharray","3,3").style("opacity",0);
 
@@ -263,9 +279,60 @@
       .style("opacity",0);
     var tipG = svg.append("g").style("opacity",0);
 
+    // Seat circles — drawn in main SVG below chart
+    function top5AtSnapshot(hourKey){
+      var snap = snapshots[hourKey];
+      if(!snap) return [];
+      return snap.slice().sort(function(a,b){return b.votes-a.votes;}).slice(0,5);
+    }
+    var seatR = 6;
+    var rowH = seatR * 2 + 4;
+    var seatG = svg.append("g");
+
+    function teamKey(name){
+      if(TEAMS.schaitr.indexOf(name)>=0) return "schaitr";
+      if(TEAMS.euu.indexOf(name)>=0) return "euu";
+      return "neutral";
+    }
+
+    function updateSeats(top5){
+      seatG.selectAll("*").remove();
+      // Group by faction
+      var factions = {};
+      top5.forEach(function(s){
+        var k = teamKey(s.name);
+        if(!factions[k]) factions[k] = [];
+        factions[k].push(s);
+      });
+      // Sort factions largest first
+      var groups = Object.keys(factions).map(function(k){return factions[k];});
+      groups.sort(function(a,b){return b.length - a.length;});
+
+      // Layout: columns side by side, dots stacked vertically
+      var colW = (w - m.left - m.right) / groups.length;
+      groups.forEach(function(g, gi){
+        var colX = m.left + colW * gi + colW / 2;
+        g.forEach(function(s, si){
+          var cy = chartH + 22 + seatR + si * rowH;
+          var col = teamColor(s.name, c);
+          seatG.append("circle")
+            .attr("cx", colX - 30).attr("cy", cy).attr("r", seatR).attr("fill", col);
+          seatG.append("text")
+            .attr("x", colX - 30 + seatR + 6).attr("y", cy)
+            .attr("dominant-baseline", "central")
+            .attr("text-anchor", "start")
+            .attr("font-size","12px").attr("font-family",FONT)
+            .attr("font-weight","600").attr("fill", col)
+            .text(s.name);
+        });
+      });
+    }
+    var lastSnap = snapHours[snapHours.length-1];
+    updateSeats(top5AtSnapshot(lastSnap));
+
     svg.append("rect")
       .attr("x",m.left).attr("y",m.top)
-      .attr("width",w-m.left-m.right).attr("height",h-m.top-m.bottom)
+      .attr("width",w-m.left-m.right).attr("height",chartH-m.top-m.bottom)
       .attr("fill","none").attr("pointer-events","all")
       .on("mousemove",function(event){
         var mx = d3.pointer(event,this)[0];
@@ -316,12 +383,15 @@
           .attr("x",tipX-tipW-2).attr("y",tipY)
           .attr("width",tipW+2).attr("height",tipH)
           .style("opacity",1);
+
+        updateSeats(top5AtSnapshot(nearest));
       })
       .on("mouseleave",function(){
         hoverLine.style("opacity",0);
         tipG.style("opacity",0);
         tipBg.style("opacity",0);
         svg.selectAll(".hover-dot").remove();
+        updateSeats(top5AtSnapshot(lastSnap));
       });
   }
 
