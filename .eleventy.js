@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/monocle.png");
   eleventyConfig.addPassthroughCopy("src/favicon-32x32.png");
+  eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addWatchTarget("src/_data/voting.csv");
 
   const playersPath = path.join(__dirname, "src/_data/players.json");
