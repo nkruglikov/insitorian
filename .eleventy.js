@@ -14,7 +14,7 @@ module.exports = function (eleventyConfig) {
   }
 
   function playerHtml(name, p) {
-    return `<span class="relative cursor-pointer underline decoration-dotted decoration-stone-400 dark:decoration-stone-500 underline-offset-2 group" onclick="navigator.clipboard.writeText('${p.ticker}');var t=this.querySelector('span');t.dataset.orig=t.dataset.orig||t.textContent;t.textContent='Copied ${p.ticker}';setTimeout(function(){t.textContent=t.dataset.orig},1000);this.blur()">${name}<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">${p.company} | ${p.ticker}</span></span>`;
+    return `<span class="relative cursor-pointer underline decoration-dotted decoration-underline underline-offset-2 group" onclick="navigator.clipboard.writeText('${p.ticker}');var t=this.querySelector('span');t.dataset.orig=t.dataset.orig||t.textContent;t.textContent='Copied ${p.ticker}';setTimeout(function(){t.textContent=t.dataset.orig},1000);this.blur()">${name}<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity bg-tooltip text-muted border border-rule shadow-sm pointer-events-none">${p.company} | ${p.ticker}</span></span>`;
   }
 
   eleventyConfig.addShortcode("player", function (name) {
@@ -46,7 +46,7 @@ module.exports = function (eleventyConfig) {
     mdLib.renderer.rules.heading_open = function(tokens, idx, options, env, self) {
       if (tokens[idx].tag === 'h2') {
         tokens[idx].attrJoin('class',
-          'text-xl font-bold border-t border-stone-300 dark:border-stone-700 pt-4 mt-8 mb-4');
+          'text-xl font-bold border-t border-rule pt-4 mt-8 mb-4');
         env._prevType = 'heading';
       }
       return self.renderToken(tokens, idx, options);

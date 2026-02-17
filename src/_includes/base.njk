@@ -9,15 +9,63 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-page: #fafaf9;
+  --c-page-hover: #e7e5e4;
+  --c-tooltip: #fafaf9;
+  --c-ink: #292524;
+  --c-muted: #78716c;
+  --c-emphasis: #44403c;
+  --c-rule: #d6d3d1;
+  --c-underline: #a8a29e;
+  --c-link: #0369a1;
+  --c-accent-warm: #b45309;
+  --c-accent-cool: #0369a1;
+  --c-accent-mute: #78716c;
+  --c-grid: #d6d3d1;
+}
+.dark {
+  --c-page: #0c0a09;
+  --c-page-hover: #292524;
+  --c-tooltip: #1c1917;
+  --c-ink: #e7e5e4;
+  --c-muted: #a8a29e;
+  --c-emphasis: #d6d3d1;
+  --c-rule: #44403c;
+  --c-underline: #78716c;
+  --c-link: #38bdf8;
+  --c-accent-warm: #d97706;
+  --c-accent-cool: #0ea5e9;
+  --c-accent-mute: #a8a29e;
+  --c-grid: #57534e;
+}
+</style>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
   darkMode: 'class',
-  theme: { extend: { fontFamily: {
-    serif: ['Literata', 'Georgia', 'serif'],
-    sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
-    logo: ['"Playfair Display"', 'Georgia', 'serif'],
-  } } }
+  theme: { extend: {
+    fontFamily: {
+      serif: ['Literata', 'Georgia', 'serif'],
+      sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+      logo: ['"Playfair Display"', 'Georgia', 'serif'],
+    },
+    colors: {
+      page:     { DEFAULT: 'var(--c-page)', hover: 'var(--c-page-hover)' },
+      tooltip:  'var(--c-tooltip)',
+      ink:      'var(--c-ink)',
+      muted:    'var(--c-muted)',
+      emphasis: 'var(--c-emphasis)',
+      rule:     'var(--c-rule)',
+      underline:'var(--c-underline)',
+      link:     'var(--c-link)',
+      'accent-warm': 'var(--c-accent-warm)',
+      'accent-cool': 'var(--c-accent-cool)',
+      'accent-mute': 'var(--c-accent-mute)',
+      grid:     'var(--c-grid)',
+    },
+  } }
 }
 </script>
 <script>
@@ -30,26 +78,26 @@ tailwind.config = {
 </script>
 {% block head %}{% endblock %}
 </head>
-<body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-serif leading-normal transition-colors">
+<body class="bg-page text-ink font-serif leading-normal transition-colors">
 
 <!-- Masthead -->
-<header class="text-center pt-7 pb-[18px] border-b-4 border-double border-stone-300 dark:border-stone-700 relative">
-  <button onclick="toggleTheme()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-stone-300 dark:border-stone-600 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors text-sm cursor-pointer" aria-label="Toggle theme">
+<header class="text-center pt-7 pb-[18px] border-b-4 border-double border-rule relative">
+  <button onclick="toggleTheme()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full border border-rule text-muted hover:bg-page-hover transition-colors text-sm cursor-pointer" aria-label="Toggle theme">
     <span class="dark:hidden">&#x263E;</span>
     <span class="hidden dark:inline">&#x2600;</span>
   </button>
   <div class="max-w-[960px] mx-auto px-5">
-    <div class="font-sans text-xs uppercase tracking-[.12em] text-stone-500 dark:text-stone-400 mb-1">Elections Special</div>
+    <div class="font-sans text-xs uppercase tracking-[.12em] text-muted mb-1">Elections Special</div>
     <h1 class="font-logo text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5">{% if isHome %}<img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian{% else %}<a href="{{ rootPath }}" class="hover:underline"><img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</a>{% endif %}</h1>
-    <div class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
+    <div class="font-sans text-[.8rem] text-muted"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
   </div>
 </header>
 
 {% block content %}{% endblock %}
 
 <!-- Footer -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-stone-500 dark:text-stone-400">The Insitorian &middot; by untech and raylu</div>
+<hr class="border-0 border-t border-rule my-7">
+<div class="text-center pt-5 pb-8 font-sans text-[.72rem] text-muted">The Insitorian &middot; by untech and raylu</div>
 
 {% block scripts %}{% endblock %}
 

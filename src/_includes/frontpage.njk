@@ -7,12 +7,12 @@
 <main class="max-w-[960px] mx-auto px-5">
 
 <!-- Charts -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<hr class="border-0 border-t border-rule my-7">
 <h2 class="text-xl font-bold mb-1.5">Voting Progress</h2>
 <div class="flex flex-wrap justify-center gap-x-3.5 gap-y-1 mb-5 font-sans text-xs">
-  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-amber-700 dark:bg-amber-600"></span>Schaitr &amp; allies</span>
-  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-sky-700 dark:bg-sky-500"></span>Euu &amp; allies</span>
-  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-stone-500 dark:bg-stone-400"></span>Unaffiliated</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-accent-warm"></span>Schaitr &amp; allies</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-accent-cool"></span>Euu &amp; allies</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-accent-mute"></span>Unaffiliated</span>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-[18px] mb-2 [&_svg]:w-full [&_svg]:h-auto [&_svg]:block">
   <div>
@@ -30,19 +30,19 @@
 </div>
 
 <!-- Candidate Comparison -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<hr class="border-0 border-t border-rule my-7">
 {% set rowCount = 3 + candidates[0].fields | length * 2 %}
 <div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] md:grid-rows-[repeat({{ rowCount }},auto)] gap-x-6 mb-2">
   {% for candidate in candidates %}
   {% if not loop.first %}
-  <div class="hidden md:block md:row-[span_{{ rowCount }}] bg-stone-300 dark:bg-stone-700"></div>
+  <div class="hidden md:block md:row-[span_{{ rowCount }}] bg-rule"></div>
   {% endif %}
   <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_{{ rowCount }}]">
     <h3 class="text-xl font-bold mb-0.5">{{ candidate.name }}</h3>
-    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">{{ candidate.role }}</span>
+    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-accent-warm mb-3">{{ candidate.role }}</span>
     <dl class="font-sans text-sm contents">
       {% for field in candidate.fields %}
-      <dt class="font-bold mt-2 text-stone-500 dark:text-stone-400 text-[.72rem] uppercase tracking-[.06em]">{{ field.label }}</dt>
+      <dt class="font-bold mt-2 text-muted text-[.72rem] uppercase tracking-[.06em]">{{ field.label }}</dt>
       <dd class="ml-0">
         {% if field.items %}
         <ul class="list-none p-0 text-[.82rem]">
@@ -56,25 +56,25 @@
       </dd>
       {% endfor %}
     </dl>
-    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-sky-700 dark:text-sky-400 hover:underline" href="{{ candidate.interview }}">Read interview with {{ candidate.name }} &rarr;</a>
+    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-link hover:underline" href="{{ candidate.interview }}">Read interview with {{ candidate.name }} &rarr;</a>
   </div>
   {% endfor %}
 </div>
 
 <!-- Article -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<hr class="border-0 border-t border-rule my-7">
 <div class="text-[1.1rem] leading-relaxed">
   {{ content | safe }}
 </div>
 
 <!-- Timeline -->
-<hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
+<hr class="border-0 border-t border-rule my-7">
 <h2 class="text-xl font-bold mb-1.5">Timeline</h2>
-<ul class="list-none p-0 divide-y divide-stone-300 dark:divide-stone-700">
+<ul class="list-none p-0 divide-y divide-rule">
   {% for event in timeline %}
   <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
-    <div class="font-sans text-[.78rem] font-bold text-stone-500 dark:text-stone-400 pt-0.5">{{ event.date }}</div>
-    <div class="[&_a]:text-sky-700 [&_a]:dark:text-sky-400">{{ event.text | linkPlayers | safe }}</div>
+    <div class="font-sans text-[.78rem] font-bold text-muted pt-0.5">{{ event.date }}</div>
+    <div class="[&_a]:text-link">{{ event.text | linkPlayers | safe }}</div>
   </li>
   {% endfor %}
 </ul>
@@ -97,14 +97,14 @@
   };
 
   function colors(){
-    var dark = document.documentElement.classList.contains('dark');
+    var s = getComputedStyle(document.documentElement);
     return {
-      line1:   dark ? '#d97706' : '#b45309',
-      line2:   dark ? '#0ea5e9' : '#0369a1',
-      neutral: dark ? '#a8a29e' : '#78716c',
-      grid:    dark ? '#57534e' : '#d6d3d1',
-      text:    dark ? '#a8a29e' : '#78716c',
-      tipBg:   dark ? '#1c1917' : '#fff'
+      line1:   s.getPropertyValue('--c-accent-warm').trim(),
+      line2:   s.getPropertyValue('--c-accent-cool').trim(),
+      neutral: s.getPropertyValue('--c-accent-mute').trim(),
+      grid:    s.getPropertyValue('--c-grid').trim(),
+      text:    s.getPropertyValue('--c-muted').trim(),
+      tipBg:   s.getPropertyValue('--c-tooltip').trim()
     };
   }
 
@@ -201,14 +201,14 @@
           return dt.getDate();
         }))
       .call(function(g){g.select(".domain").attr("stroke",c.grid);})
-      .call(function(g){g.selectAll(".tick text").attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text);})
+      .call(function(g){g.selectAll(".tick text").attr("font-size","11px").attr("font-family",FONT).attr("fill",c.text);})
       .call(function(g){g.selectAll(".tick line").attr("stroke",c.grid);});
 
     // Month label on first tick
     var firstDt = new Date(startMs);
     svg.append("text")
       .attr("x",m.left).attr("y",chartH-2)
-      .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
+      .attr("font-size","11px").attr("font-family",FONT).attr("fill",c.text)
       .text(months[firstDt.getMonth()]);
 
     // Y axis
@@ -216,7 +216,7 @@
       .attr("transform","translate("+m.left+",0)")
       .call(d3.axisLeft(y).ticks(4).tickFormat(d3.format("d")))
       .call(function(g){g.select(".domain").remove();})
-      .call(function(g){g.selectAll(".tick text").attr("font-size","10px").attr("font-family",FONT).attr("fill",c.text);})
+      .call(function(g){g.selectAll(".tick text").attr("font-size","11px").attr("font-family",FONT).attr("fill",c.text);})
       .call(function(g){g.selectAll(".tick line").remove();});
 
     var line = d3.line()
@@ -268,7 +268,7 @@
           .attr("x", flipLeft ? g.lx-6 : g.lx+6)
           .attr("y", g.ly)
           .attr("text-anchor", flipLeft ? "end" : "start")
-          .attr("font-size","10px").attr("font-family",FONT)
+          .attr("font-size","11px").attr("font-family",FONT)
           .attr("font-weight","600");
         g.entries.forEach(function(e,i){
           if(i>0) txt.append("tspan").attr("fill",c.text).text(", ");
@@ -289,7 +289,7 @@
       .attr("stroke",c.text).attr("stroke-width",0.75)
       .attr("stroke-dasharray","3,3").style("opacity",0);
     var hoverDate = svg.append("text")
-      .attr("font-size","9px").attr("font-family",FONT).attr("fill",c.text)
+      .attr("font-size","11px").attr("font-family",FONT).attr("fill",c.text)
       .style("opacity",0);
 
     // Seat circles — drawn in main SVG below chart
