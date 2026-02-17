@@ -7,14 +7,30 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/favicon-32x32.png");
   eleventyConfig.addWatchTarget("src/_data/voting.csv");
 
-  const players = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "src/_data/players.json"), "utf-8")
-  );
+  const playersPath = path.join(__dirname, "src/_data/players.json");
+
+  function loadPlayers() {
+    return JSON.parse(fs.readFileSync(playersPath, "utf-8"));
+  }
+
+  function playerHtml(name, p) {
+    return `<span class="relative cursor-pointer underline decoration-dotted decoration-stone-400 dark:decoration-stone-500 underline-offset-2 group" onclick="navigator.clipboard.writeText('${p.ticker}');var t=this.querySelector('span');t.dataset.orig=t.dataset.orig||t.textContent;t.textContent='Copied ${p.ticker}';setTimeout(function(){t.textContent=t.dataset.orig},1000);this.blur()">${name}<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">${p.company} | ${p.ticker}</span></span>`;
+  }
 
   eleventyConfig.addShortcode("player", function (name) {
-    const p = players[name];
+    const players = loadPlayers();
+    const key = Object.keys(players).find(k => k.toLowerCase() === name.toLowerCase());
+    const p = key ? players[key] : null;
     if (!p) return name;
-    return `<span class="relative cursor-help border-b border-dotted border-stone-500 group" tabindex="0">${name}<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2.5 py-1 rounded text-xs font-sans font-normal whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity bg-stone-50 dark:bg-stone-900 text-stone-500 dark:text-stone-400 border border-stone-300 dark:border-stone-700 shadow-sm pointer-events-none">${p.company} | ${p.ticker}</span></span>`;
+    return playerHtml(name, p);
+  });
+
+  eleventyConfig.addFilter("linkPlayers", function (text) {
+    const players = loadPlayers();
+    for (const [name, p] of Object.entries(players)) {
+      text = text.replace(new RegExp(`\\b${name}\\b`, "g"), playerHtml(name, p));
+    }
+    return text;
   });
 
   eleventyConfig.addPairedShortcode("zh", function(content) {

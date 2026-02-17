@@ -166,11 +166,12 @@ On Promitor, my running mates are {% player "Filefolders" %}
 and {% player "PurpleOrange" %}. They are senior officers of
 COSM. I believe File doesn't need to be introduced since he has
 been very active helping answer questions on Prom chat.
-PurpleOrange works quietly in the background but is the main
-man behind the whole gateway project for Insitor.
+{% player "PurpleOrange" %} works quietly in the background but
+is the main man behind the whole gateway project for Insitor.
 
-On Avalon, my running mates are Filefolders and
-{% player "Tegridy" %}. Tegridy is a senior representative of
+On Avalon, my running mates are {% player "Filefolders" %} and
+{% player "Tegridy" %}. {% player "Tegridy" %} is a senior
+representative of
 the CN community.
 
 All of us are aligned in the vision of how we want Insitor

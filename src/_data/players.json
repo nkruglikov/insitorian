@@ -1,6 +1,12 @@
 {
+  "Schaitr": { "company": "Lumerz LLP", "ticker": "LUME" },
   "Filefolders": { "company": "Knott-Stone-Davis Cooperative", "ticker": "KSDC" },
   "PurpleOrange": { "company": "Hydrohomies", "ticker": "HYDR" },
   "Tegridy": { "company": "Utnapishtim", "ticker": "UTNA" },
-  "Euu": { "company": "EndlessFrontier Capital", "ticker": "EUU" }
+  "Euu": { "company": "EndlessFrontier Capital", "ticker": "EUU" },
+  "heiheihahei": { "company": "wind9", "ticker": "WIN5" },
+  "Tnn": { "company": "Auooi", "ticker": "ZET" },
+  "Andy97": { "company": "Cygnus", "ticker": "CNS" },
+  "Saganaki": { "company": "Flaming Cheese Inc", "ticker": "SAGA" },
+  "GuyKid88": { "company": "Bogside", "ticker": "BOG" }
 }

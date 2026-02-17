@@ -52,20 +52,21 @@ I was dissatisfied with the fact that government funds were
 sitting idle. In Chinese culture, the government should be
 responsible for construction and development; allowing funds to
 remain idle is considered irresponsible. At the time I announced
-my candidacy, both Schaitr and COSM strongly opposed using
-government funds for any cause. After my announcement, Schaitr
-changed his mind and now also supports spending government
+my candidacy, both {% player "Schaitr" %} and COSM strongly
+opposed using government funds for any cause. After my
+announcement, {% player "Schaitr" %} changed his mind and now
+also supports spending government
 funds. COSM then fell in line with him.
 
 {% zh %}
 关于选举，我们最终注意到政府的资金在沉睡，
 这让我们感到不满。在中国的文化中政府应该承担
 建设以及开发的责任，让资金进入闲置是一种
-不负责任的表现。在当时schaitr以及cosm都极力
+不负责任的表现。在当时{% player "schaitr" %}以及cosm都极力
 反对动用政府资金进行任何改变。目前的争议已经
-被消除，schaitr已经改变了初衷，动用政府资金
+被消除，{% player "schaitr" %}已经改变了初衷，动用政府资金
 已经被允许，cosm则是没有主见仅仅作为支持
-schaitr的一方，无论政策是什么。
+{% player "schaitr" %}的一方，无论政策是什么。
 {% endzh %}
 
 **Do you have a particular attachment to the Insitor region or
@@ -117,7 +118,8 @@ infrastructure on the planets.
 **Who would you purchase the gate construction materials from?**
 
 I will purchase the materials from large corporations: COSM, GTU
-(Schaitr) and others, even from OOG. Gateways are a large and
+({% player "Schaitr" %}) and others, even from OOG. Gateways
+are a large and
 long-term undertaking and government funds are insufficient for
 this project. Because of this, it's necessary to develop more
 planets specializing in metallurgy, manufacturing, and
@@ -133,14 +135,15 @@ situation is a mess.
 这将促进整体的进步而不是像现在一样乱成一锅粥。
 {% endzh %}
 
-**Schaitr proposes another way to finance gateway construction:
+**{% player "Schaitr" %} proposes another way to finance gateway construction:
 base leases. Why do you think your way is better?**
 
 I think both ways are fine. We just have different preferences.
-Schaitr runs a lot of base leasing programs, so he prefers
-leases. I do a lot of lending, so I prefer lending.
+{% player "Schaitr" %} runs a lot of base leasing programs, so
+he prefers leases. I do a lot of lending, so I prefer lending.
 
-We don't have any conflict with Schaitr. It is miscommunication
+We don't have any conflict with {% player "Schaitr" %}. It is
+miscommunication
 with COSM that was the problem. To be clear, I am not part of
 COSM anymore, I represent my own policy in this election.
 
@@ -150,7 +153,7 @@ COSM anymore, I represent my own policy in this election.
 因为没有当总督而停止我们的计划，他依然在进行
 租赁，我依然在放贷。
 
-我和schaitr没有任何矛盾，仅仅是因为在cosm的
+我和{% player "schaitr" %}没有任何矛盾，仅仅是因为在cosm的
 沟通中出现了问题导致了这一系列问题。目前我
 已经脱离了cosm，仅代表我的执政理念进行选举。
 {% endzh %}
@@ -179,7 +182,8 @@ but rather their bias.
 allies who would run in the elections alongside you? If yes, who
 would they be?**
 
-I have my allies running alongside me: heiheihahei and Tnn. We
+I have my allies running alongside me:
+{% player "heiheihahei" %} and {% player "Tnn" %}. We
 played together from the start. We might be less famous than
 veteran players, but we have more energy, and we have better
 ideas. I think that playing together is part of the fun in the
@@ -190,7 +194,7 @@ might have been lost due to the volume of messages.
 
 {% zh %}
 是的我之前公开过一次，但是信息太多可能已经
-消失了。我们的人员包括heiheihahei和Tnn。
+消失了。我们的人员包括{% player "heiheihahei" %}和{% player "Tnn" %}。
 
 我们来自同一个团队，我们的经验都是相同的。
 我们可能没有老玩家那样沉稳，但是我们有更好的
@@ -213,7 +217,7 @@ my platform.
 {% zh %}
 我的计划并不局限于哪个团体，目前大多数支持者
 来自中文社区，也有讲英语的玩家支持我但是不多，
-这没什么问题。Schaitr和cosm的政策是在选举
+这没什么问题。{% player "Schaitr" %}和cosm的政策是在选举
 开始的时候临时做出了改变，而最先提出这个观点
 的人是我，但是cosm毫不犹豫的抛弃了我。
 那么现在选举进行中，我不会放弃，

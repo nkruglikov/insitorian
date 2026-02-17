@@ -76,5 +76,6 @@ old governor and their parliament usually get reelected without
 issues. However, upcoming elections on Promitor, the most
 populous planet in the universe, and also some neighbouring
 planets, are unusually heated. The incumbent government of
-Schaitr, who has 3.5 years of playtime experience, is
-challenged by the newcomer Euu, who has 4 months of experience.
+{% player "Schaitr" %}, who has 3.5 years of playtime
+experience, is challenged by the newcomer
+{% player "Euu" %}, who has 4 months of experience.
