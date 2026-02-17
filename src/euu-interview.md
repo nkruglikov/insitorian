@@ -12,8 +12,8 @@ templateEngineOverride: njk,md
 
 ## Background
 
-**How did you learn about PrUn? What attracted you, and what
-made you stay there?**
+**How did you learn about PrUn? What attracted you and what
+made you stay?**
 
 A friend introduced me to this game. I found the gameplay
 interesting, and playing it with friends has been very enjoyable.
@@ -33,7 +33,7 @@ economic entity.
 {% endzh %}
 
 **Can you share anything about your real-life background or
-profession, and how it relates to PrUn?**
+profession and how it relates to PrUn?**
 
 I own multiple businesses in various countries, including the
 UK, the USA, Hong Kong, and mainland China. My businesses
@@ -62,11 +62,11 @@ funds. COSM then fell in line with him.
 关于选举，我们最终注意到政府的资金在沉睡，
 这让我们感到不满。在中国的文化中政府应该承担
 建设以及开发的责任，让资金进入闲置是一种
-不负责任的表现。在当时{% player "schaitr" %}以及cosm都极力
+不负责任的表现。在当时{% player "Schaitr" %}以及COSM都极力
 反对动用政府资金进行任何改变。目前的争议已经
-被消除，{% player "schaitr" %}已经改变了初衷，动用政府资金
-已经被允许，cosm则是没有主见仅仅作为支持
-{% player "schaitr" %}的一方，无论政策是什么。
+被消除，{% player "Schaitr" %}已经改变了初衷，动用政府资金
+已经被允许，COSM则是没有主见仅仅作为支持
+{% player "Schaitr" %}的一方，无论政策是什么。
 {% endzh %}
 
 **Do you have a particular attachment to the Insitor region or
@@ -82,7 +82,7 @@ myself to Insitor anymore.
 目前我已经不再限于INS地区，之前我在推广中
 会更倾向于INS地区，因为游戏之中有派系区分。
 由于最近一系列的事情发生，我对于INS地区的
-主导者cosm感到不满，我不会再被限制于INS地区，
+主导者COSM感到不满，我不会再被限制于INS地区，
 我会更倾向于宇宙的发展。
 {% endzh %}
 
@@ -102,7 +102,7 @@ and this applies to me in real life as well.
 ## Policy
 
 **In your latest proposal published on the Promitor chat, you
-pledge to spend 40% of funds to purchase gate construction
+pledged to spend 40% of funds to purchase gate construction
 materials, 20% to develop new planets and 17% to directly fund
 bases for gateway materials production. Is this a correct
 description? What will happen with the remaining 23% of the
@@ -127,8 +127,8 @@ construction. This will promote overall development. The current
 situation is a mess.
 
 {% zh %}
-我会继续向cosm以及gtu还有其他地区的集团
-进行购买，甚至是火星的oog。这并不能作为一个
+我会继续向COSM以及GTU还有其他地区的集团
+进行购买，甚至是火星的OOG。这并不能作为一个
 短期计划来看，更像是一个长期项目。可见政府
 资金完全不足以支付一个完整的星门，所以开发
 配套的冶金星球和制造星球、土木星球是必要的。
@@ -142,10 +142,10 @@ I think both ways are fine. We just have different preferences.
 {% player "Schaitr" %} runs a lot of base leasing programs, so
 he prefers leases. I do a lot of lending, so I prefer lending.
 
-We don't have any conflict with {% player "Schaitr" %}. It is
-miscommunication
-with COSM that was the problem. To be clear, I am not part of
-COSM anymore, I represent my own policy in this election.
+I don't have any conflict with {% player "Schaitr" %}. It's
+miscommunication with COSM that was the problem. To be clear,
+I am not part of COSM anymore; I represent my own policy in
+this election.
 
 {% zh %}
 我个人认为这是习惯的问题，他喜欢租赁而我喜欢
@@ -153,9 +153,9 @@ COSM anymore, I represent my own policy in this election.
 因为没有当总督而停止我们的计划，他依然在进行
 租赁，我依然在放贷。
 
-我和{% player "schaitr" %}没有任何矛盾，仅仅是因为在cosm的
+我和{% player "Schaitr" %}没有任何矛盾，仅仅是因为在COSM的
 沟通中出现了问题导致了这一系列问题。目前我
-已经脱离了cosm，仅代表我的执政理念进行选举。
+已经脱离了COSM，仅代表我的执政理念进行选举。
 {% endzh %}
 
 **Currently, it's impossible to explore your bank website
@@ -217,9 +217,9 @@ my platform.
 {% zh %}
 我的计划并不局限于哪个团体，目前大多数支持者
 来自中文社区，也有讲英语的玩家支持我但是不多，
-这没什么问题。{% player "Schaitr" %}和cosm的政策是在选举
+这没什么问题。{% player "Schaitr" %}和COSM的政策是在选举
 开始的时候临时做出了改变，而最先提出这个观点
-的人是我，但是cosm毫不犹豫的抛弃了我。
+的人是我，但是COSM毫不犹豫的抛弃了我。
 那么现在选举进行中，我不会放弃，
 我会对支持我的人负责到底。
 {% endzh %}

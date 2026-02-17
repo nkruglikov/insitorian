@@ -11,8 +11,8 @@ templateEngineOverride: njk,md
 
 ## Background
 
-**How did you learn about PrUn? What attracted you, and what
-made you stay there?**
+**How did you learn about PrUn? What attracted you and what
+made you stay?**
 
 I believe I saw a Youtube advert on Spacedock or Eckhart, and
 I gave it a try because it sounded interesting. I have this
@@ -40,7 +40,7 @@ profitable endeavors, but that doesn't appeal to me compared to
 helping new players.
 
 **Can you share anything about your real-life background or
-profession, and how it relates to PrUn?**
+profession and how it relates to PrUn?**
 
 Nope, not going to share anything, except that Mandarin is my
 second language, and this has been really helpful these past few
@@ -64,7 +64,7 @@ players — but I'm against using public funds for loans.
 Promitor and Avalon, and I believe the opposition also wants to
 contest Boucher and Helion Prime.
 
-**Do you have a particular attachment to the Insitor region, or
+**Do you have a particular attachment to the Insitor region or
 are you more interested in the galaxy as a whole?**
 
 Of course [I am attached to Insitor], and Promitor holds a
@@ -89,7 +89,7 @@ wasted.
 **Your main proposal is to use government funds to finance
 "base leases" for producing gateway materials. You've run many
 such programs in the past. Can you explain to an unfamiliar
-reader, how do these deals work in general?**
+reader how these deals work in general?**
 
 This is basically leasing your permit to build a base, with you
 repaying by sending me the products for a set period of time.
@@ -118,7 +118,7 @@ would include integrated Rfab production onsite (5 PP3 and 5
 PP4).
 
 **What are the alternative ways to finance gateway
-construction, and why do you think base leases are the best
+construction and why do you think base leases are the best
 option?**
 
 Base leases are not meant to finance gateway construction —
@@ -179,10 +179,10 @@ region to be, and how public funds should be used to fund
 public projects that benefit all, instead of a few.
 
 **These elections are parliamentary. So the important question
-is not who collects the most votes individually, but whose
-group will gain the most seats. But what would happen if one
-side gained the most seats, but the other one gained the most
-votes for an individual?**
+is not who collects the most votes individually but whose group
+will gain the most seats. But what would happen if one side
+gained the most seats, but the other one gained the most votes
+for an individual?**
 
 As you said, it's a parliamentary election, so it's a team
 effort.
