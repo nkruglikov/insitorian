@@ -8,7 +8,7 @@
 
 <!-- Charts -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<h2 class="font-serif text-xl font-bold mb-1.5">Voting Progress</h2>
+<h2 class="text-xl font-bold mb-1.5">Voting Progress</h2>
 <div class="flex flex-wrap justify-center gap-x-3.5 gap-y-1 mb-5 font-sans text-xs">
   <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-amber-700 dark:bg-amber-600"></span>Schaitr &amp; allies</span>
   <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-sky-700 dark:bg-sky-500"></span>Euu &amp; allies</span>
@@ -38,7 +38,7 @@
   <div class="hidden md:block md:row-[span_{{ rowCount }}] bg-stone-300 dark:bg-stone-700"></div>
   {% endif %}
   <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_{{ rowCount }}]">
-    <h3 class="font-serif text-xl font-bold mb-0.5">{{ candidate.name }}</h3>
+    <h3 class="text-xl font-bold mb-0.5">{{ candidate.name }}</h3>
     <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-amber-700 dark:text-amber-400 mb-3">{{ candidate.role }}</span>
     <dl class="font-sans text-sm contents">
       {% for field in candidate.fields %}
@@ -69,7 +69,7 @@
 
 <!-- Timeline -->
 <hr class="border-0 border-t border-stone-300 dark:border-stone-700 my-7">
-<h2 class="font-serif text-xl font-bold mb-1.5">Timeline</h2>
+<h2 class="text-xl font-bold mb-1.5">Timeline</h2>
 <ul class="list-none p-0 divide-y divide-stone-300 dark:divide-stone-700">
   {% for event in timeline %}
   <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">

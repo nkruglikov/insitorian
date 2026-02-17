@@ -6,9 +6,19 @@
 <title>{{ title or "The Insitorian" }}</title>
 <link rel="icon" type="image/png" sizes="32x32" href="{{ rootPath }}favicon-32x32.png">
 <link rel="apple-touch-icon" href="{{ rootPath }}monocle.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config = { darkMode: 'class' }
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { fontFamily: {
+    serif: ['Literata', 'Georgia', 'serif'],
+    sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+    logo: ['"Playfair Display"', 'Georgia', 'serif'],
+  } } }
+}
 </script>
 <script>
 (function(){
@@ -30,7 +40,7 @@ tailwind.config = { darkMode: 'class' }
   </button>
   <div class="max-w-[960px] mx-auto px-5">
     <div class="font-sans text-xs uppercase tracking-[.12em] text-stone-500 dark:text-stone-400 mb-1">Elections Special</div>
-    <h1 class="text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5">{% if isHome %}<img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian{% else %}<a href="{{ rootPath }}" class="hover:underline"><img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</a>{% endif %}</h1>
+    <h1 class="font-logo text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5">{% if isHome %}<img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian{% else %}<a href="{{ rootPath }}" class="hover:underline"><img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</a>{% endif %}</h1>
     <div class="font-sans text-[.8rem] text-stone-500 dark:text-stone-400"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
   </div>
 </header>
