@@ -39,7 +39,7 @@
     var chartH = Math.round(w * 0.8);
     var seatZone = 90;
     var h = chartH + seatZone;
-    var m = {top:14,right:34,bottom:26,left:30};
+    var m = {top:14,right:80,bottom:26,left:30};
 
     var svg = d3.select(sel).append("svg")
       .attr("viewBox","0 0 "+w+" "+h)
@@ -181,11 +181,10 @@
         if(groups[i].ly-groups[i-1].ly<10) groups[i].ly=groups[i-1].ly+10;
       }
       groups.forEach(function(g){
-        var flipLeft = g.lx > w-70;
         var txt = labelG.append("text")
-          .attr("x", flipLeft ? g.lx-6 : g.lx+6)
+          .attr("x", g.lx+6)
           .attr("y", g.ly)
-          .attr("text-anchor", flipLeft ? "end" : "start")
+          .attr("text-anchor", "start")
           .attr("font-size","11px").attr("font-family",FONT)
           .attr("font-weight","600");
         g.entries.forEach(function(e,i){
