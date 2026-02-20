@@ -5,7 +5,7 @@ heading: "Interview with Schaitr"
 subtitle: "Incumbent Governor of Promitor · Candidate for Promitor, Avalon & Boucher"
 interviewer: "untech"
 rootPath: "../../"
-permalink: insitor-feb-2026/schaitr-interview/index.html
+permalink: 2026-02-16/schaitr-interview/index.html
 templateEngineOverride: njk,md
 ---
 

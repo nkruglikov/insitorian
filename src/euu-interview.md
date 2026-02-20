@@ -6,7 +6,7 @@ subtitle: "Challenger · Candidate for Promitor, Avalon & Boucher"
 interviewer: "untech"
 translated: true
 rootPath: "../../"
-permalink: insitor-feb-2026/euu-interview/index.html
+permalink: 2026-02-16/euu-interview/index.html
 templateEngineOverride: njk,md
 ---
 

@@ -1,0 +1,98 @@
+{% extends "base.njk" %}
+
+{% set isHome = true %}
+{% set rootPath = "../" %}
+
+{% block content %}
+<main class="max-w-[960px] mx-auto px-5">
+
+<nav class="pt-5 font-sans text-[.8rem]">
+  <a href="../" class="text-link hover:underline">&larr; Back</a>
+</nav>
+
+<!-- Charts -->
+<hr class="border-0 border-t border-rule my-7">
+<h2 class="text-xl font-bold mb-1.5">Voting Progress</h2>
+<div class="flex flex-wrap justify-center gap-x-3.5 gap-y-1 mb-5 font-sans text-xs">
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-accent-warm"></span>Schaitr &amp; allies</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-accent-cool"></span>Euu &amp; allies</span>
+  <span class="inline-flex items-center gap-[5px]"><span class="w-3.5 h-[3px] bg-accent-mute"></span>Unaffiliated</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-[10px] mb-2 [&_svg]:w-full [&_svg]:h-auto [&_svg]:block">
+  <div>
+    <h3 class="font-sans text-sm font-bold mb-1.5">Promitor</h3>
+    <div id="chart-promitor"></div>
+  </div>
+  <div>
+    <h3 class="font-sans text-sm font-bold mb-1.5">Avalon</h3>
+    <div id="chart-avalon"></div>
+  </div>
+  <div>
+    <h3 class="font-sans text-sm font-bold mb-1.5">Boucher</h3>
+    <div id="chart-boucher"></div>
+  </div>
+</div>
+
+<!-- Candidate Comparison -->
+<hr class="border-0 border-t border-rule my-7">
+{% set rowCount = 3 + candidates[0].fields | length * 2 %}
+<div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] md:grid-rows-[repeat({{ rowCount }},auto)] gap-x-6 mb-2">
+  {% for candidate in candidates %}
+  {% if not loop.first %}
+  <div class="hidden md:block md:row-[span_{{ rowCount }}] bg-rule"></div>
+  {% endif %}
+  <div class="flex flex-col md:grid md:grid-rows-subgrid md:row-[span_{{ rowCount }}]">
+    <h3 class="text-xl font-bold mb-0.5">{{ candidate.name }}</h3>
+    <span class="block font-sans text-[.72rem] uppercase tracking-[.1em] text-accent-warm mb-3">{{ candidate.role }}</span>
+    <dl class="font-sans text-sm contents">
+      {% for field in candidate.fields %}
+      <dt class="font-bold mt-2 text-muted text-[.72rem] uppercase tracking-[.06em]">{{ field.label }}</dt>
+      <dd class="ml-0">
+        {% if field.items %}
+        <ul class="list-none p-0 text-[.82rem]">
+          {% for item in field.items %}
+          <li class="py-0.5">{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        {{ field.value | linkPlayers | safe }}
+        {% endif %}
+      </dd>
+      {% endfor %}
+    </dl>
+    <a class="inline-block mt-auto pt-3 font-sans text-[.8rem] font-bold text-link hover:underline" href="{{ candidate.interview }}">Read interview with {{ candidate.name }} &rarr;</a>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Article -->
+<hr class="border-0 border-t border-rule my-7">
+<div class="text-[1.1rem] leading-relaxed">
+  {{ content | safe }}
+</div>
+
+<!-- Timeline -->
+<hr class="border-0 border-t border-rule my-7">
+<h2 class="text-xl font-bold mb-1.5">Timeline</h2>
+<ul class="list-none p-0 divide-y divide-rule">
+  {% for event in timeline %}
+  <li class="grid grid-cols-[90px_1fr] md:grid-cols-[110px_1fr] gap-3 py-3 text-[.9rem]">
+    <div class="font-sans text-[.78rem] font-bold text-muted pt-0.5">{{ event.date }}</div>
+    <div class="[&_a]:text-link">{{ event.text | linkPlayers | safe }}</div>
+  </li>
+  {% endfor %}
+</ul>
+
+</main>
+{% endblock %}
+
+{% block scripts %}
+<!-- D3.js Charts -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>var votingData = {{ votingData | dump | safe }};</script>
+<script src="{{ rootPath }}js/charts.js"></script>
+{% endblock %}
+
+{% block onThemeToggle %}
+if(window._drawAllCharts) window._drawAllCharts();
+{% endblock %}
