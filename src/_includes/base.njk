@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400..500&display=swap" rel="stylesheet">
 <style>
 :root {
   --c-page: #fafaf9;
@@ -39,6 +40,11 @@
   --c-accent-cool: #0ea5e9;
   --c-accent-mute: #a8a29e;
   --c-grid: #57534e;
+}
+.lang-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 450;
+  font-size: 1.1em;
 }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -87,7 +93,6 @@ tailwind.config = {
     <span class="hidden dark:inline">&#x2600;&#xFE0E;</span>
   </button>
   <div class="max-w-[960px] mx-auto px-5">
-    <div class="font-sans text-xs uppercase tracking-[.12em] text-muted mb-1">Elections Special</div>
     <h1 class="font-logo text-[2.2rem] md:text-5xl font-bold tracking-normal mb-0.5">{% if isHome %}<img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian{% else %}<a href="{{ rootPath }}" class="hover:underline"><img src="{{ rootPath }}monocle.png" alt="" class="inline h-[1.1em] align-[-0.15em]"> The Insitorian</a>{% endif %}</h1>
     <div class="font-sans text-[.8rem] text-muted"><script>document.write(new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}))</script> &middot; Prosperous Universe</div>
   </div>
