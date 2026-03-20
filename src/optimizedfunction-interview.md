@@ -87,4 +87,5 @@ it becomes a large amount which can be effectively used for regional development
 
 The net impact on the individuals is almost to the magnitude of a rounding error.
 People don't even consider taxes of planets when building bases.
-Also, a good time to mention that starter planets have low tax ceilings so the governments cannot impose unbearable taxes in the first place.
+Also, a good time to mention that starter planets have low [tax ceilings](https://handbook.apex.prosperousuniverse.com/wiki/local-rules/#production-fees)
+so the governments cannot impose unbearable taxes in the first place.

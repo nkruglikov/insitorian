@@ -103,7 +103,7 @@ but Martian wanted the reimbursement in one big block that would have left Gibso
 After rejecting his motion, parliament agreed on several smaller reimbursements – spread out to not hit the treasury too badly.
 Everyone was on board with that, so that motion did pass.
 
-**Does that include you? Were you on board with reimbursing martianengineer for regional development after he spent his own money?**
+**Does that include you? Were you on board with reimbursing MartianEngineer for regional development after he spent his own money?**
 
 I was one of the people who voted both against reimbursing MartianEngineer in one big block that would drain the treasury
 and in favour of paying him in several chunks instead.
